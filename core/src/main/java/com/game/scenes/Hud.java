@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-//import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -13,24 +12,12 @@ import com.game.main.Mygame;
 
 public class Hud {
     private final Stage stage;
-    private final Viewport viewport;
-
-    private final Integer worldTimer;
-    private final float timeCount;
-    private final Integer score;
-
-//    Label countdownLabel;
-//    Label scoreLabel;
-//    Label timeLabel;
-//    Label levelLabel;
-//    Label worldLabel;
-//    Label userLabel;
 
     public Hud(Mygame game){
-        this.worldTimer = 300;
-        this.timeCount = 0;
-        this.score = 0;
-        this.viewport = new FitViewport(game.getV_WIDTH(), game.getV_HEIGHT(), new OrthographicCamera());
+        Integer worldTimer = 300;
+//        float timeCount = 0;
+        Integer score = 0;
+        Viewport viewport = new FitViewport(game.getV_WIDTH(), game.getV_HEIGHT(), new OrthographicCamera());
         this.stage = new Stage(viewport, game.getBatch());
 
         Table table = new Table();
@@ -52,7 +39,7 @@ public class Hud {
         table.add(levelLabel).expandX();
         table.add(countdownLabel).expandX();
 
-        stage.addActor(table);
+       this.stage.addActor(table);
     }
 
     public Stage getStage() {

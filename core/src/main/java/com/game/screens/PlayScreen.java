@@ -4,25 +4,44 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.main.Mygame;
 import com.game.scenes.Hud;
 
 public class PlayScreen implements Screen {
     private final Mygame game;
-//    private final Texture texture;
     private final OrthographicCamera gamecam;
-    private final Viewport gamePort;
+    private final Viewport viewport;
     private final Hud hud;
+    private final OrthogonalTiledMapRenderer renderer;
 
     public PlayScreen(Mygame game){
         this.game = game;
-//        texture = new Texture("libgdx.png");
         this.gamecam = new OrthographicCamera();
-//        gamePort = new ScreenViewport(gamecam);
-        this.gamePort = new FitViewport(game.getV_WIDTH(), game.getV_HEIGHT(), gamecam);
-        this.hud = new Hud(game);
+        int viewportWidth = 160;
+        int viewportHeight = 320;
+        this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
+        this.hud = new Hud(this.game);
+        TmxMapLoader maploader = new TmxMapLoader();
+        TiledMap map = maploader.load("worlds/world1.tmx");
+        this.renderer = new OrthogonalTiledMapRenderer(map);
+        this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
+    }
+
+    public void handleInput(float delta){
+        if (Gdx.input.isTouched()){ // for testing purposes only (to see the whole world map)
+            gamecam.position.x +=100*delta;
+        }
+    }
+
+    public void update(float delta){
+        handleInput(delta);
+        gamecam.update();
+        renderer.setView(gamecam);
     }
 
     @Override
@@ -32,20 +51,17 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta){
+        update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//        game.batch.setProjectionMatrix(gamecam.combined);
-//        game.batch.begin();
-//        game.batch.draw(texture, 0, 0);
-//        game.batch.end();
+        renderer.render();
         game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();
-
     }
 
     @Override
     public void resize(int width, int height) {
-        gamePort.update(width, height);
+        viewport.update(width, height, false);
     }
 
     @Override
