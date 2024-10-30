@@ -1,6 +1,7 @@
 package com.game.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -33,8 +34,21 @@ public class PlayScreen implements Screen {
     }
 
     public void handleInput(float delta){
+        int speed = 32;
         if (Gdx.input.isTouched()){ // for testing purposes only (to see the whole world map)
             gamecam.position.x +=100*delta;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W)){
+            gamecam.position.y += speed * delta;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)){
+            gamecam.position.y -= speed * delta;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+            gamecam.position.x += speed * delta;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.A)){
+            gamecam.position.x -= speed * delta;
         }
     }
 
