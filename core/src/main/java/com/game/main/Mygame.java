@@ -1,19 +1,21 @@
 package com.game.main;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.screens.PlayScreen;
 
 /** {@link com.badlogic.gdx.Game} implementation shared by all platforms. */
 public class Mygame extends Game {
-    private final int V_WIDTH;
-    private final int V_HEIGHT;
+    private final int width;
+    private final int height;
     private SpriteBatch batch;
 
     public Mygame(){
         super();
-        this.V_WIDTH = 1280;
-        this.V_HEIGHT = 640;
+        this.width = 1280;
+        this.height = 720;
     }
 
     public void setBatch(SpriteBatch batch) {
@@ -24,12 +26,12 @@ public class Mygame extends Game {
         return this.batch;
     }
 
-    public int getV_WIDTH(){
-        return this.V_WIDTH;
+    public int getWidth(){
+        return this.width;
     }
 
-    public int getV_HEIGHT(){
-        return this.V_HEIGHT;
+    public int getHeight(){
+        return this.height;
     }
 
     @Override
@@ -41,6 +43,8 @@ public class Mygame extends Game {
 
     @Override
     public void render() {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         super.render();
     }
 

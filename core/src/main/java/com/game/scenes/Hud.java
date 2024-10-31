@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.main.Mygame;
 
@@ -17,7 +17,8 @@ public class Hud {
         Integer worldTimer = 300;
 //        float timeCount = 0;
         Integer score = 0;
-        Viewport viewport = new FitViewport(game.getV_WIDTH(), game.getV_HEIGHT(), new OrthographicCamera());
+//        Viewport viewport = new FitViewport(game.getWidth(), game.getHeight(), new OrthographicCamera());
+        Viewport viewport = new ExtendViewport(game.getWidth(), game.getHeight(), new OrthographicCamera());
         this.stage = new Stage(viewport, game.getBatch());
 
         Table table = new Table();

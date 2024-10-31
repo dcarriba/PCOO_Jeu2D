@@ -5,10 +5,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.main.Mygame;
 import com.game.scenes.Hud;
@@ -23,8 +26,9 @@ public class PlayScreen implements Screen {
     public PlayScreen(Mygame game){
         this.game = game;
         this.gamecam = new OrthographicCamera();
-        int viewportWidth = 160;
-        int viewportHeight = 320;
+        int viewportWidth = 640;
+        int viewportHeight = 360;
+//        this.viewport = new FitViewport(viewportWidth, viewportHeight, this.gamecam);
         this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
         this.hud = new Hud(this.game);
         TmxMapLoader maploader = new TmxMapLoader();
@@ -66,8 +70,6 @@ public class PlayScreen implements Screen {
     @Override
     public void render(float delta){
         update(delta);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         renderer.render();
         game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();
