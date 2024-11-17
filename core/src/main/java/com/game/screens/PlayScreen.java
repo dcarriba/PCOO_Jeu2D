@@ -29,25 +29,28 @@ public class PlayScreen implements Screen {
     public PlayScreen(Mygame game){
         this.game = game;
         this.gamecam = new OrthographicCamera();
-        int viewportWidth = 320;
-        int viewportHeight = 180;
-//        this.viewport = new FitViewport(viewportWidth, viewportHeight, this.gamecam);
-        this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
+        int viewportWidth = game.getSettings().getWidth()/4;
+        int viewportHeight = game.getSettings().getHeight()/4;
+        this.viewport = new FitViewport(viewportWidth, viewportHeight, this.gamecam);
+//        this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
         this.hud = new Hud(this.game);
         TmxMapLoader maploader = new TmxMapLoader();
         TiledMap map = maploader.load("worlds/world1.tmx");
         this.renderer = new OrthogonalTiledMapRenderer(map);
-
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
-        this.player = new Player(0, 0, "tilesets/characterstiles/char1_1.png", 16, 16, 0, 9);
+        this.player = new Player(0, 0, "tilesets/characterstiles/char1_1.png",
+            16, 16, 0, 9);
     }
 
     public void update(float delta){
         player.update(delta);
+
+        // Update the camera's view to follow the player
         gamecam.position.x = player.getPositionX() + 8;
-        gamecam.position.y = player.getPositionY() + 8; // Update the camera's view to follow the player
-        gamecam.update();
-        renderer.setView(gamecam);
+        gamecam.position.y = player.getPositionY() + 8;
+
+        gamecam.update(); // Make sure camera is updated after position change
+        player.update(delta); // Update player state (e.g., animation)
     }
 
     @Override
@@ -57,19 +60,6 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta){
-//        update(delta);
-//        renderer.render();
-//        game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
-//        hud.getStage().draw();
-//        game.getBatch().begin();
-//        player.update(delta);
-//        player.draw(game.getBatch());
-//        game.getBatch().end();
-        // Update the camera to follow the player
-
-        update(delta);
-        gamecam.update();  // Make sure camera is updated after position change
-        player.update(delta);  // Update player state (e.g., animation)
 
         // Render the map using the OrthogonalTiledMapRenderer
         renderer.setView(gamecam);  // Set the view for the map renderer based on camera
@@ -88,6 +78,7 @@ public class PlayScreen implements Screen {
         game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();  // Draw the HUD
 
+        update(delta); // updates the player and the camera
 
     }
 

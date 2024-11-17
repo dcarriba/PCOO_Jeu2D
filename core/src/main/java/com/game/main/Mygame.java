@@ -8,14 +8,12 @@ import com.game.screens.PlayScreen;
 
 /** {@link com.badlogic.gdx.Game} implementation shared by all platforms. */
 public class Mygame extends Game {
-    private final int width;
-    private final int height;
+    private final Settings settings;
     private SpriteBatch batch;
 
     public Mygame(){
         super();
-        this.width = 1280;
-        this.height = 720;
+        this.settings = new Settings();
     }
 
     public void setBatch(SpriteBatch batch) {
@@ -26,12 +24,8 @@ public class Mygame extends Game {
         return this.batch;
     }
 
-    public int getWidth(){
-        return this.width;
-    }
-
-    public int getHeight(){
-        return this.height;
+    public Settings getSettings() {
+        return settings;
     }
 
     @Override

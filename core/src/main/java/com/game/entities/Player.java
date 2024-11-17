@@ -56,8 +56,8 @@ public class Player extends Entity{
             float moveStepY = targetY - getPositionY();
 
             float distance = (float) Math.sqrt(moveStepX * moveStepX + moveStepY * moveStepY);
-            float moveSpeedX = moveStepX / distance * moveSpeed;
-            float moveSpeedY = moveStepY / distance * moveSpeed;
+            float moveSpeedX = (moveStepX / distance) * moveSpeed;
+            float moveSpeedY = (moveStepY / distance) * moveSpeed;
 
             setPositionX(getPositionX() + moveSpeedX * deltaTime);
             setPositionY(getPositionY() + moveSpeedY * deltaTime);

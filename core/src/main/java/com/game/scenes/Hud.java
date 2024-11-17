@@ -18,7 +18,7 @@ public class Hud {
 //        float timeCount = 0;
         Integer score = 0;
 //        Viewport viewport = new FitViewport(game.getWidth(), game.getHeight(), new OrthographicCamera());
-        Viewport viewport = new ExtendViewport(game.getWidth(), game.getHeight(), new OrthographicCamera());
+        Viewport viewport = new ExtendViewport(game.getSettings().getWidth(), game.getSettings().getHeight(), new OrthographicCamera());
         this.stage = new Stage(viewport, game.getBatch());
 
         Table table = new Table();
