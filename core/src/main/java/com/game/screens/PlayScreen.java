@@ -1,13 +1,7 @@
 package com.game.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g3d.Renderable;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -38,8 +32,8 @@ public class PlayScreen implements Screen {
         TiledMap map = maploader.load("worlds/world1.tmx");
         this.renderer = new OrthogonalTiledMapRenderer(map);
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
-        this.player = new Player(0, 0, "tilesets/characterstiles/char1_1.png",
-            16, 16, 0, 9);
+        this.player = new Player(1, 2, "tilesets/characterstiles/char1_1.png",
+            16, 16, 0, 0);
     }
 
     public void update(float delta){
@@ -60,6 +54,7 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta){
+        update(delta); // updates the player and the camera
 
         // Render the map using the OrthogonalTiledMapRenderer
         renderer.setView(gamecam);  // Set the view for the map renderer based on camera
@@ -70,7 +65,6 @@ public class PlayScreen implements Screen {
 
         // Begin the sprite batch for the player
         game.getBatch().begin();
-
         player.draw(game.getBatch());  // Draw player on top of the map
         game.getBatch().end();
 
@@ -78,7 +72,7 @@ public class PlayScreen implements Screen {
         game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();  // Draw the HUD
 
-        update(delta); // updates the player and the camera
+
 
     }
 
