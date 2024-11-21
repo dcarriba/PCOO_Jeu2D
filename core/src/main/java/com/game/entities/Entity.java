@@ -5,24 +5,86 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * The abstract <code>Entity</code> class represents an entity
+ */
 public abstract class Entity {
-    private float positionX; // current X position
-    private float positionY; // current Y position
-    private float targetX;  // Target position (center of the next tile) (X axis)
-    private float targetY; // Target position (center of the next tile) (Y axis)
-    private final Texture spriteSheet; // Sprite Sheet containing the Sprite of the Entity
-    private final int frameWidth; // width of the frame containing one sprite in the sheet
-    private final int frameHeight; // heigt of the frame containing one sprite in the sheet
-    private final int characterRow; // row of the sheet containing the first sprite of the Entity
-    private final int characterCol; // column of the sheet containing the first sprite of the Entity
-    private Animation<TextureRegion> walkAnimation; // contains all sprites needed for the walking animation
-    private float walkAnimationState; // number representing the current used sprite in the walking animation
-    private boolean isMoving; // if the Entity is currrently moving or not
-    private float moveSpeed;  // Movement speed in units per second
-    private final float moveSpeedDefault; // Default Movement speed
-    private final float tileWidth; // Tile width of the map
-    private final float tileHeight; // Tile height of the map
+    /**
+     * Current X position
+     */
+    private float positionX;
+    /**
+     * Current Y position
+     */
+    private float positionY;
+    /**
+     * Position the entity is going to move to next (i.e. center of the next tile) (X axis)
+     */
+    private float targetX;
+    /**
+     * Position the entity is going to move to next (i.e. center of the next tile) (Y axis)
+     */
+    private float targetY;
+    /**
+     * Sprite sheet containing the sprite of the entity
+     */
+    private final Texture spriteSheet;
+    /**
+     * Width of the frame containing one sprite in the sheet
+     */
+    private final int frameWidth;
+    /**
+     * Heigt of the frame containing one sprite in the sheet
+     */
+    private final int frameHeight;
+    /**
+     * Row of the sheet containing the first sprite of the entity
+     */
+    private final int characterRow;
+    /**
+     * Column of the sheet containing the first sprite of the entity
+     */
+    private final int characterCol;
+    /**
+     * Contains all sprites needed for the walking animation
+     */
+    private Animation<TextureRegion> walkAnimation;
+    /**
+     * Number representing the current used sprite in the walking animation
+     */
+    private float walkAnimationState;
+    /**
+     * Boolean representing if the entity is currrently moving or not
+     */
+    private boolean isMoving;
+    /**
+     * Movement speed in units per second
+     */
+    private float moveSpeed;
+    /**
+     * Default movement speed
+     */
+    private final float moveSpeedDefault;
+    /**
+     * Width of one tile in the map
+     */
+    private final float tileWidth;
+    /**
+     * Height of one tile in the map
+     */
+    private final float tileHeight;
 
+
+    /**
+     * Constructor to create an Entity
+     * @param positionX Current X position
+     * @param positionY Current Y position
+     * @param spriteSheet Sprite sheet containing the sprite of the entity
+     * @param frameWidth Width of the frame containing one sprite in the sheet
+     * @param frameHeight Heigth of the frame containing one sprite in the sheet
+     * @param characterRow Row of the sheet containing the first sprite of the entity
+     * @param characterCol Column of the sheet containing the first sprite of the entity
+     */
     public Entity(float positionX, float positionY, String spriteSheet,
                   int frameWidth, int frameHeight, int characterRow, int characterCol) {
         this.tileWidth = 16f;
@@ -37,14 +99,13 @@ public abstract class Entity {
         this.frameHeight = frameHeight;
         this.characterRow = characterRow;
         this.characterCol = characterCol;
-        setWalkAnimation(0);
+        setWalkAnimation("down");
         this.walkAnimationState = 0;
         this.isMoving = false;
         this.moveSpeedDefault = 32f;
         this.moveSpeed = this.moveSpeedDefault;
     }
 
-    // Getters
     public float getPositionX() {
         return positionX;
     }
@@ -89,7 +150,6 @@ public abstract class Entity {
         return tileHeight;
     }
 
-    // Setters
     public void setPositionY(float positionY) {
         this.positionY = positionY;
     }
@@ -114,7 +174,30 @@ public abstract class Entity {
         this.moveSpeed = moveSpeed;
     }
 
-    private void setWalkAnimation(int row){
+    /**
+     * Sets the walking animation
+     * @param direction The direction the entity is facing.
+     *                  Must be "down", "left", "right" or "up"
+     */
+    public void setWalkAnimation(String direction){
+        int row = 0;
+        switch (direction) {
+            case "down":
+                // row stays at 0
+                break;
+            case "left":
+                row = 1;
+                break;
+            case "right":
+                row = 2;
+                break;
+            case "up":
+                row = 3;
+                break;
+            default:
+                // exception
+                break;
+        }
         TextureRegion[][] temp = TextureRegion.split(this.spriteSheet, this.frameWidth, this.frameHeight);
         TextureRegion[] walkFrames = new TextureRegion[4];
         System.arraycopy(temp[this.characterRow + row], this.characterCol, walkFrames, 0, 3);
@@ -122,13 +205,10 @@ public abstract class Entity {
         walkAnimation = new Animation<>(0.25f, walkFrames);
     }
 
-    // Update walk frames based on the direction
-    public void updateAnimation(int row) {
-        setWalkAnimation(row);
-    }
-
-    private void moveTowardsTarget(float deltaTime){
-        // Smooth transition to target position
+    /**
+     * Smooth transition to the next tile
+     */
+    private void moveToNextTile(float deltaTime){
         if (isMoving) {
             float moveStepX = targetX - getPositionX();
             float moveStepY = targetY - getPositionY();
@@ -140,7 +220,7 @@ public abstract class Entity {
             setPositionX(getPositionX() + moveSpeedX * deltaTime);
             setPositionY(getPositionY() + moveSpeedY * deltaTime);
 
-            // Stop moveTowardsTarget when the target position is reached
+            // Stop moveToNextTile when the target position is reached
             if (Math.abs(getPositionX() - targetX) < 1f && Math.abs(getPositionY() - targetY) < 1f) {
                 setPositionX(targetX);
                 setPositionY(targetY);
@@ -151,7 +231,7 @@ public abstract class Entity {
     }
 
     public void update(float deltaTime){
-        moveTowardsTarget(deltaTime);
+        moveToNextTile(deltaTime);
         walkAnimationState += deltaTime;
     }
 
