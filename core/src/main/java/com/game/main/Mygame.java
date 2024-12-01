@@ -6,17 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.screens.PlayScreen;
 
-/**
- * The <code>Mygame</code> is the main game class.
- * It extends {@link com.badlogic.gdx.Game} (implementation shared by all platforms)
- */
+/** The <code>Mygame</code> is the main game class. It extends {@link com.badlogic.gdx.Game} */
 public class Mygame extends Game {
     private final Settings settings;
     private SpriteBatch batch;
 
-    /**
-     * Constructor to create the Game
-     */
+    /** Constructor to create the Game */
     public Mygame(){
         super();
         this.settings = new Settings();
@@ -39,7 +34,6 @@ public class Mygame extends Game {
         this.setBatch(new SpriteBatch());
         this.setScreen(new PlayScreen(this));
     }
-
 
     @Override
     public void render() {

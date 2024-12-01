@@ -5,10 +5,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
+//import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.entities.Player;
+import com.game.graphics.SpriteSheet;
 import com.game.main.Mygame;
 import com.game.scenes.Hud;
 
@@ -32,8 +33,8 @@ public class PlayScreen implements Screen {
         TiledMap map = maploader.load("worlds/world1.tmx");
         this.renderer = new OrthogonalTiledMapRenderer(map);
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
-        this.player = new Player(1, 2, "tilesets/characterstiles/char1_1.png",
-            16, 16, 0, 0);
+        SpriteSheet spriteSheet = new SpriteSheet("tilesets/characterstiles/char1_1.png", 16, 16, 0, 0);
+        this.player = new Player(1, 2, spriteSheet);
     }
 
     public void update(float delta){
@@ -44,7 +45,7 @@ public class PlayScreen implements Screen {
         gamecam.position.y = player.getPositionY() + 8;
 
         gamecam.update(); // Make sure camera is updated after position change
-        player.update(delta); // Update player state (e.g., animation)
+        player.update(delta); // Update player state (the animation, etc.)
     }
 
     @Override
@@ -71,9 +72,6 @@ public class PlayScreen implements Screen {
         // Finally, render the HUD
         game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();  // Draw the HUD
-
-
-
     }
 
     @Override

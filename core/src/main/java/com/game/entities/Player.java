@@ -2,59 +2,73 @@ package com.game.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.game.directions.*;
+import com.game.graphics.SpriteSheet;
 
-/**
- * The <code>Player</code> class represents a player and extends the {@link Entity} class
- */
-public class Player extends Entity{
+import java.util.HashMap;
+import java.util.Map;
+
+/** The <code>Player</code> class represents a player and extends the {@link Entity} class */
+public class Player extends Entity {
 
     /**
      * Constructor to create a Player
      * @param positionX Current X position
      * @param positionY Current Y position
      * @param spriteSheet Sprite sheet containing the sprite of the player
-     * @param frameWidth Width of the frame containing one sprite in the sheet
-     * @param frameHeight Heigth of the frame containing one sprite in the sheet
-     * @param characterRow Row of the sheet containing the first sprite of the player
-     * @param characterCol Column of the sheet containing the first sprite of the player
      */
-    public Player(float positionX, float positionY, String spriteSheet,
-                  int frameWidth, int frameHeight, int characterRow, int characterCol) {
-        super(positionX, positionY, spriteSheet, frameWidth, frameHeight, characterRow, characterCol);
+    public Player(float positionX, float positionY, SpriteSheet spriteSheet) {
+        super(positionX, positionY, spriteSheet);
     }
 
-    /**
-     * Handles the user's keyboard input
-     */
-    private void handleInput(){
+    /** Handles the user's keyboard input */
+    private void handleInput() {
         if (!getIsMoving()) {
-            if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-                setTargetY(getTargetY() + getTileHeight()); // Move up (one tile)
-                setIsMoving(true);
-                setWalkAnimation("up");
-            }
-            else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-                setTargetY(getTargetY() - getTileHeight()); // Move down (one tile)
-                setIsMoving(true);
-                setWalkAnimation("down");
-            }
-            else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-                setTargetX(getTargetX() - getTileWidth()); // Move left (one tile)
-                setIsMoving(true);
-                setWalkAnimation("left");
-            }
-            else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-                setTargetX(getTargetX() + getTileWidth()); // Move right (one tile)
-                setIsMoving(true);
-                setWalkAnimation("right");
+            Map<Integer, Runnable> keyActions = createKeyActions();
+
+            for (Map.Entry<Integer, Runnable> entry : keyActions.entrySet()) {
+                if (Gdx.input.isKeyPressed(entry.getKey())) {
+                    entry.getValue().run();
+                    break;
+                }
             }
 
-            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
-                setMoveSpeed(getMoveSpeedDefault()*2);
+            // Handle movement speed
+            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
+                setMoveSpeed(getMoveSpeedDefault() * 2);
             } else {
                 setMoveSpeed(getMoveSpeedDefault());
             }
         }
+    }
+
+    /** Creates a Map containing all Key inputs and their associated action */
+    private Map<Integer, Runnable> createKeyActions() {
+        Map<Integer, Runnable> keyActions = new HashMap<>();
+        keyActions.put(Input.Keys.W, () -> {
+            setTargetY(getTargetY() + getTileHeight());
+            setIsMoving(true);
+            setWalkAnimation(new UpDirection());
+        });
+
+        keyActions.put(Input.Keys.S, () -> {
+            setTargetY(getTargetY() - getTileHeight());
+            setIsMoving(true);
+            setWalkAnimation(new DownDirection());
+        });
+
+        keyActions.put(Input.Keys.A, () -> {
+            setTargetX(getTargetX() - getTileWidth());
+            setIsMoving(true);
+            setWalkAnimation(new LeftDirection());
+        });
+
+        keyActions.put(Input.Keys.D, () -> {
+            setTargetX(getTargetX() + getTileWidth());
+            setIsMoving(true);
+            setWalkAnimation(new RightDirection());
+        });
+        return keyActions;
     }
 
     @Override
@@ -62,5 +76,4 @@ public class Player extends Entity{
         handleInput();
         super.update(deltaTime);
     }
-
 }
