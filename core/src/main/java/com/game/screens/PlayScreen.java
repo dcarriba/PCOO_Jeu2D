@@ -2,14 +2,12 @@ package com.game.screens;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 //import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.entities.Player;
 import com.game.graphics.SpriteSheet;
+import com.game.graphics.WorldMap;
 import com.game.main.Mygame;
 import com.game.scenes.Hud;
 
@@ -18,7 +16,7 @@ public class PlayScreen implements Screen {
     private final OrthographicCamera gamecam;
     private final Viewport viewport;
     private final Hud hud;
-    private final OrthogonalTiledMapRenderer renderer;
+    private final WorldMap worldMap;
     private final Player player;
 
     public PlayScreen(Mygame game){
@@ -29,12 +27,10 @@ public class PlayScreen implements Screen {
         this.viewport = new FitViewport(viewportWidth, viewportHeight, this.gamecam);
 //        this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
         this.hud = new Hud(this.game);
-        TmxMapLoader maploader = new TmxMapLoader();
-        TiledMap map = maploader.load("worlds/world1.tmx");
-        this.renderer = new OrthogonalTiledMapRenderer(map);
+        this.worldMap = new WorldMap("worlds/world1.tmx", 16, 16);
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
         SpriteSheet spriteSheet = new SpriteSheet("tilesets/characterstiles/char1_1.png", 16, 16, 0, 0);
-        this.player = new Player(1, 2, spriteSheet);
+        this.player = new Player(1, 2, spriteSheet, this.worldMap);
     }
 
     public void update(float delta){
@@ -57,9 +53,9 @@ public class PlayScreen implements Screen {
     public void render(float delta){
         update(delta); // updates the player and the camera
 
-        // Render the map using the OrthogonalTiledMapRenderer
-        renderer.setView(gamecam);  // Set the view for the map renderer based on camera
-        renderer.render();  // Render the map
+        // Render the map
+        worldMap.getRenderer().setView(gamecam); // Set the view for the map renderer based on camera
+        worldMap.getRenderer().render(); // Render the map
 
         // Set the projection matrix for the player (same camera as the map)
         game.getBatch().setProjectionMatrix(gamecam.combined);
@@ -97,5 +93,6 @@ public class PlayScreen implements Screen {
     @Override
     public void dispose() {
         player.dispose();
+        worldMap.dispose();
     }
 }
