@@ -1,13 +1,8 @@
 package com.game.entities;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.game.directions.*;
 import com.game.graphics.SpriteSheet;
 import com.game.graphics.WorldMap;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.game.input.player.PlayerInputHandler;
 
 /** The <code>Player</code> class represents a player and extends the {@link Entity} class */
 public class Player extends Entity {
@@ -26,51 +21,8 @@ public class Player extends Entity {
     /** Handles the user's keyboard input */
     private void handleInput() {
         if (!getIsMoving()) {
-            Map<Integer, Runnable> keyActions = createKeyActions();
-
-            for (Map.Entry<Integer, Runnable> entry : keyActions.entrySet()) {
-                if (Gdx.input.isKeyPressed(entry.getKey())) {
-                    entry.getValue().run();
-                    break;
-                }
-            }
-
-            // Handle movement speed
-            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
-                setMoveSpeed(getMoveSpeedDefault() * 2);
-            } else {
-                setMoveSpeed(getMoveSpeedDefault());
-            }
+            new PlayerInputHandler().handleInput(this);
         }
-    }
-
-    /** Creates a Map containing all Key inputs and their associated action */
-    private Map<Integer, Runnable> createKeyActions() {
-        Map<Integer, Runnable> keyActions = new HashMap<>();
-        keyActions.put(Input.Keys.W, () -> {
-            setTargetY(getTargetY() + getWorldMap().getTileHeight());
-            setIsMoving(true);
-            getEntityAnimation().setWalkAnimation(new UpDirection(), getSpriteSheet());
-        });
-
-        keyActions.put(Input.Keys.S, () -> {
-            setTargetY(getTargetY() - getWorldMap().getTileHeight());
-            setIsMoving(true);
-            getEntityAnimation().setWalkAnimation(new DownDirection(), getSpriteSheet());
-        });
-
-        keyActions.put(Input.Keys.A, () -> {
-            setTargetX(getTargetX() - getWorldMap().getTileWidth());
-            setIsMoving(true);
-            getEntityAnimation().setWalkAnimation(new LeftDirection(), getSpriteSheet());
-        });
-
-        keyActions.put(Input.Keys.D, () -> {
-            setTargetX(getTargetX() + getWorldMap().getTileWidth());
-            setIsMoving(true);
-            getEntityAnimation().setWalkAnimation(new RightDirection(), getSpriteSheet());
-        });
-        return keyActions;
     }
 
     @Override
