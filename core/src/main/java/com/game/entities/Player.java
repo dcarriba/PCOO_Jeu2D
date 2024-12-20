@@ -9,16 +9,16 @@ public class Player extends Entity {
 
     /**
      * Constructor to create a Player
-     * @param positionX   Current X position
-     * @param positionY   Current Y position
+     * @param positionX Current X position
+     * @param positionY Current Y position
      * @param spriteSheet Sprite sheet containing the sprite of the player
-     * @param worldMap    The Tiled Map the entity will be rendered on
+     * @param worldMap The Tiled Map the entity will be rendered on
      */
     public Player(float positionX, float positionY, SpriteSheet spriteSheet, WorldMap worldMap) {
         super(positionX, positionY, spriteSheet, worldMap);
     }
 
-    /** Handles the user's keyboard input */
+    /** Handles the player's input using a <code>PlayerInputHandler</code> */
     private void handleInput() {
         if (!getIsMoving()) {
             new PlayerInputHandler().handleInput(this);

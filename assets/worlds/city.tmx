@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="30">
+ <tileset firstgid="1" source="../tilesets/worldtiles/exterior.tsx"/>
+ <layer id="1" name="ground" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt18FRwzAURVHRQQYoBFII0CKNYAqB9AA0gDbMeMGMjS1Fj8xZnJ1jO/8uvny4KuUAAAAAAAAAAPCL6+pmwW3Ae472UkqZqtfS9zl31f2CY8A8RtMjix5Z9MiiRxY9suiRRY8s5+rxUD0ueAqYx2jn6oEe/5EeWfTIokcWPbLokUWPLHpk0SOLHln0yKJHFj3W+ajz+ay+Os9Jj797Lv1MMz2fs8boOa81n9klGz3ntd7Lsvn/WnP93t/1uNfoObe0dQ+03B92kR6p9MiiRxY9suzt0eL7Y9KjaY9W9GjTY+/3x4+THhH7Az1S6ZFl6znJDu7fw5lovLeNZyE9stgfWfTIokcWPbLokUWPLHpk0SOLHln0yKJHFj2y6JFFjyx6ZNEjix5Z9AAAAAAAAACAy/cNdcH0Iw==
+  </data>
+ </layer>
+ <layer id="2" name="obstacles" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztnctu00AYhZ0FFAlRrm3X5SYh7moreACeoOzLHXXBCyAhxAtw2SHYAE8BXQAPArwLvxWP+msUZ8aOx//JzDnS0cnE0Xgm83+pbTnpyqSqjolXmBB5SXyZCZPW9cAkH8hpXQ9M8oGc1vXAJB/IaV0PTPKBnNb1wCQfyGldD0zygZzW9cAkH8hpXQ9M8oGc1vXQNZ+IX4qfij8BjKd0Pk5VVXVafKaarof1eND5SCXX/w15vC95q1mPFOrSLzofqZS6f60u61E6H2OIfIRFPshHjMhHepGPsMgH+YgR+Ugv8hEW+SiXj++ynx+Bfe1NpiYfONpL8P6Rj8VEPrBEPrBEPrBEPrBEPmbrrPhcwGsJx7XsfAzd/23xmmxfb/GGeGvhd3+4eaDxMXT/9XpsyfbtFu8kWo/c+BhK78Ufqvb1cNuHVm58hPRFXvNV/C3w2rfid+LdyWy77UMrRz70PVW+fspzv8S/A327+l8Xb8zIEB/zxhAzj1z4OCI+Ie1V8ckZr/sj2/+K/0Xysd14x8sQH/PGEDMPND5cfb2KdH399EB8QXxV5nVNfL3je3Gg1uiO+K54t/F9L932tvHoMeh+50kzhcaHvm+wFOk5o/FR3zd4s5reN1iK9JzR+PisPodKkZ4zGh+LnE/4xzahdgqVfnyl5R/bhNpOxwdcn9yOrxbhwz++CrWdrqj9PZPHH1v8PGJcfY/xcuQjVufn9K/r+4Vq96n5LsqRj1httvRfny/o+t5Xbffcw0RjIx9YKpkPxPUomY+2zytLkY84jTVu8nGoeedwY42bfByq7znckCqZD1/6GPfByPt2KpkPRJEPLOXIR9/ru2Nc9w0pRz76Xt9F+HueGx/1d1r6Xt/te012SOXIxzIrNz6WXeQDS+QDS+QDS+QDS+QDS+TDVke9OZIPW12UOT5S8yQfWCIf4+uNzOteM7fHTbo2+cAS+RhPr9V8fC5cm3xgqXQ+/N/TtxY6H6nT/z196/Gg85E69XfE+P8NmOSjrLSuByb5QE7remCSD+S0rgcm+UBO63pgkg/ktK4HJvlATut6YJIP5LSuByb5QE7remCSD+T8DwKcsis=
+  </data>
+ </layer>
+ <layer id="3" name="obstacles2" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2tENgyAQAFCdw7pdF9E6kpO4SDtCSfSrSdG0liK+l1wE/TmSC0SgqgAAAAAAAABgXVfPz77+bx4AAAAAAAAAkKMmxOWL7wCpjRvf8d6ed6qmEG2Ie4jH0p4S55CTa2HjOapS6yvmjGMGyMnrPLzWT5EDlOQWqetBzQMAcED+4QAgH5/u71rPAQAAAAAA2JszKAAAAAAAAAB+4QnqdxZN
+  </data>
+ </layer>
+</map>

@@ -22,15 +22,15 @@ public class PlayScreen implements Screen {
     public PlayScreen(Mygame game){
         this.game = game;
         this.gamecam = new OrthographicCamera();
-        int viewportWidth = game.getSettings().getWidth()/4;
-        int viewportHeight = game.getSettings().getHeight()/4;
+        int viewportWidth = this.game.getSettings().getWidth()/4;
+        int viewportHeight = this.game.getSettings().getHeight()/4;
         this.viewport = new FitViewport(viewportWidth, viewportHeight, this.gamecam);
 //        this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
         this.hud = new Hud(this.game);
-        this.worldMap = new WorldMap("worlds/world1.tmx", 16, 16);
+        this.worldMap = new WorldMap("worlds/city.tmx", 16, 16);
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
         SpriteSheet spriteSheet = new SpriteSheet("tilesets/characterstiles/char1_1.png", 16, 16, 0, 0);
-        this.player = new Player(1, 2, spriteSheet, this.worldMap);
+        this.player = new Player(45, 53, spriteSheet, this.worldMap);
     }
 
     public void update(float delta){
