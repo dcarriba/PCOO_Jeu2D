@@ -14,7 +14,7 @@ public class PlayerInputKeyUp extends PlayerInputKey {
         player.getEntityAnimation().setWalkAnimation(new UpDirection(), player.getSpriteSheet());
 
         // if the Tile the player will move to next is not blocked (i.e. it is not an obstacle)
-        if (player.getWorldMap().isTileNotBlocked(player.getPositionX()/player.getWorldMap().getTileWidth(), player.getPositionY()/player.getWorldMap().getTileWidth() + 1)){
+        if (player.getWorldMap().isTileNotBlocked(player.getTileX(), player.getTileY()-1)){
             // the player will move to the next Tile
             player.setTargetY(player.getTargetY() + player.getWorldMap().getTileHeight());
             player.setIsMoving(true);

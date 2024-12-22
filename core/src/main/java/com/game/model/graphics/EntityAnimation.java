@@ -1,5 +1,6 @@
 package com.game.model.graphics;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.game.model.directions.Direction;
@@ -56,11 +57,8 @@ public class EntityAnimation {
         currentFrame = walkAnimation.getKeyFrame(walkAnimationState, true);
     }
 
-    /**
-     * Increments the walkAnimationState attribute for the next animation frame
-     * @param deltaTime deltaTime
-     */
-    public void nextWalkAnimationState(float deltaTime){
-        walkAnimationState+=deltaTime;
+    /** Increments the walkAnimationState attribute for the next animation frame */
+    public void nextWalkAnimationState(){
+        walkAnimationState += Gdx.graphics.getDeltaTime();
     }
 }

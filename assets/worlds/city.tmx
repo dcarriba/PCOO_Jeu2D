@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="30">
  <tileset firstgid="1" source="../tilesets/worldtiles/exterior.tsx"/>
+ <tileset firstgid="481" source="../tilesets/worldtiles/interior.tsx"/>
  <layer id="1" name="ground" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt18FRwzAURVHRQQYoBFII0CKNYAqB9AA0gDbMeMGMjS1Fj8xZnJ1jO/8uvny4KuUAAAAAAAAAAPCL6+pmwW3Ae472UkqZqtfS9zl31f2CY8A8RtMjix5Z9MiiRxY9suiRRY8s5+rxUD0ueAqYx2jn6oEe/5EeWfTIokcWPbLokUWPLHpk0SOLHln0yKJHFj3W+ajz+ay+Os9Jj797Lv1MMz2fs8boOa81n9klGz3ntd7Lsvn/WnP93t/1uNfoObe0dQ+03B92kR6p9MiiRxY9suzt0eL7Y9KjaY9W9GjTY+/3x4+THhH7Az1S6ZFl6znJDu7fw5lovLeNZyE9stgfWfTIokcWPbLokUWPLHpk0SOLHln0yKJHFj2y6JFFjyx6ZNEjix5Z9AAAAAAAAACAy/cNdcH0Iw==
+   eJzt3M1Nw0AURtGBCiKgEKAQoEUawdSBgB6ABrAXSF6EeIh/5iM6i7OKE9vvKpqxFGV3VsoOAAAAAAAAAGCPi97lhKuA62ztqZTycl7Kc1n3PNe9mwm3AfNobejRFT1S6JFFjyx6ZNEjix5Z9MiyVY+73v2Eh4B5tLZVD/T4j/TIokcWPbLokUWPLHpk0SOLHln0yKJHFj2y6FHno5/PZ+9r5Tnp8XePZT3dyJrnqdF6zrWG36uN53aKhntsPedab2Xa+N5qjp/7vjU+q/Wcl3TsOrDk+mEt0iOVHln0yKJHlrk9Dj1/DHvR314b6/RYtMdS9Fimx9znjx/vekSsH+iRSo8sNfukfazB6/ewJ2rv9ci9kB5ZrB9Z9MiiRxY9suiRRY8semTRI4seWfTIokcWPbLokUWPLHpk0SPLVv+HTH0P3w8AAAAAAAAAOG3f3XL00g==
   </data>
  </layer>
  <layer id="2" name="obstacles" width="100" height="100">

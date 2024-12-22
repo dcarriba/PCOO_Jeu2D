@@ -1,6 +1,5 @@
 package com.game.controller;
 
-import com.badlogic.gdx.Gdx;
 import com.game.model.entities.Player;
 import com.game.controller.inputhandler.player.PlayerInputHandler;
 
@@ -17,9 +16,9 @@ public class PlayerController {
         return player;
     }
 
-    public void update(){
-        player.update(Gdx.graphics.getDeltaTime());
+    public void control(){
+        player.update();
         playerInputHandler.handleInput();
-        player.update(Gdx.graphics.getDeltaTime());
+        player.update();
     }
 }

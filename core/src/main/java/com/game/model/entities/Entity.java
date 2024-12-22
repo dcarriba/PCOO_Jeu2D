@@ -1,5 +1,6 @@
 package com.game.model.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.game.model.graphics.EntityAnimation;
 import com.game.model.graphics.SpriteSheet;
 import com.game.model.graphics.WorldMap;
@@ -29,17 +30,17 @@ public abstract class Entity {
 
     /**
      * Constructor to create an Entity
-     * @param positionX Current X position
-     * @param positionY Current Y position
+     * @param tileX X coordinate of the tile on the TiledMap where the entity will be placed on
+     * @param tileY Y coordinate of the tile on the TiledMap where the entity will be placed on
      * @param spriteSheet Sprite sheet containing the sprite of the entity
      */
-    public Entity(float positionX, float positionY, SpriteSheet spriteSheet, WorldMap worldMap) {
+    public Entity(int tileX, int tileY, SpriteSheet spriteSheet, WorldMap worldMap) {
         this.worldMap = worldMap;
-        this.positionX = positionX * this.worldMap.getTileWidth();
-        this.positionY = positionY * this.worldMap.getTileHeight();
+        this.positionX = (float) tileX * this.worldMap.getTileWidth();
+        this.positionY = (float) (this.worldMap.getTiledMap().getProperties().get("height", Integer.class)-1-tileY) * this.worldMap.getTileHeight();
         // Set the initial target to be the center of the current tile
-        this.targetX = Math.round(getPositionX() / this.worldMap.getTileWidth()) * this.worldMap.getTileWidth();
-        this.targetY = Math.round(getPositionY() / this.worldMap.getTileHeight()) * this.worldMap.getTileHeight();
+        this.targetX = Math.round(this.positionX / this.worldMap.getTileWidth()) * this.worldMap.getTileWidth();
+        this.targetY = Math.round(this.positionY / this.worldMap.getTileHeight()) * this.worldMap.getTileHeight();
         this.spriteSheet = spriteSheet;
         this.entityAnimation = new EntityAnimation(this.spriteSheet);
         this.isMoving = false;
@@ -91,16 +92,6 @@ public abstract class Entity {
         return moveSpeedDefault;
     }
 
-    public void setPositionY(float positionY) {
-        this.positionY = positionY * this.worldMap.getTileHeight();
-        this.targetY = Math.round(getPositionY() / this.worldMap.getTileHeight()) * this.worldMap.getTileHeight();
-    }
-
-    public void setPositionX(float positionX) {
-        this.positionX = positionX * this.worldMap.getTileWidth();
-        this.targetX = Math.round(getPositionX() / this.worldMap.getTileWidth()) * this.worldMap.getTileWidth();
-    }
-
     public void setTargetX(float targetX) {
         this.targetX = targetX;
     }
@@ -117,8 +108,48 @@ public abstract class Entity {
         this.moveSpeed = moveSpeed;
     }
 
+    /** @return the X coordinate of the tile on the TiledMap where the entity is placed on */
+    public int getTileX() {
+        return (int) (positionX/worldMap.getTileWidth());
+    }
+
+    /** @return the Y coordinate of the tile on the TiledMap where the entity is placed on */
+    public int getTileY() {
+        return (int) ((-1)*(positionY/worldMap.getTileHeight() - this.worldMap.getTiledMap().getProperties().get("height", Integer.class) + 1));
+    }
+
+    /**
+     * Sets the entity on the tile with the X coordinate
+     * @param tileX X coordinate of the tile on the TiledMap where the entity will be placed on
+     */
+    public void setTileX(int tileX){
+        this.positionX = (float) tileX * this.worldMap.getTileWidth();
+        this.targetX = Math.round(this.positionX / this.worldMap.getTileWidth()) * this.worldMap.getTileWidth();
+    }
+
+    /**
+     * Sets the entity on the tile with the Y coordinate
+     * @param tileY X coordinate of the tile on the TiledMap where the entity will be placed on
+     */
+    public void setTileY(int tileY){
+        this.positionY = (float) (this.worldMap.getTiledMap().getProperties().get("height", Integer.class)-1-tileY) * this.worldMap.getTileHeight();
+        this.targetY = Math.round(this.positionY / this.worldMap.getTileHeight()) * this.worldMap.getTileHeight();
+    }
+
+    /**
+     * Sets the entity on the tile with the X and Y coordinates
+     * @param tileX X coordinate of the tile on the TiledMap where the entity will be placed on
+     * @param tileY X coordinate of the tile on the TiledMap where the entity will be placed on
+     */
+    public void setOnTile(int tileX, int tileY){
+        setTileX(tileX);
+        setTileY(tileY);
+    }
+
     /** Smooth transition to the next tile */
-    private void moveToNextTile(float deltaTime) {
+    private void moveToNextTile() {
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
         if (isMoving) {
             float moveStepX = targetX - positionX;
             float moveStepY = targetY - positionY;
@@ -130,13 +161,6 @@ public abstract class Entity {
             positionX += moveSpeedX * deltaTime;
             positionY += moveSpeedY * deltaTime;
 
-            // Stop moveToNextTile when the target position is reached
-//            if (Math.abs(positionX - targetX) < 1f && Math.abs(positionY - targetY) < 1f) {
-//                positionX = targetX;
-//                positionY = targetY;
-//                isMoving = false;
-//            }
-
             // Stop when the player is close enough to the target position
             if (distance < 1f) {
                 positionX = targetX;
@@ -146,11 +170,11 @@ public abstract class Entity {
         }
     }
 
-    public void update(float deltaTime) {
+    public void update() {
         if (isMoving) {
-            entityAnimation.nextWalkAnimationState(deltaTime);
+            entityAnimation.nextWalkAnimationState();
             entityAnimation.updateCurrentFrame();
-            moveToNextTile(deltaTime);
+            moveToNextTile();
         } else {
             entityAnimation.setStandingFrame();
         }

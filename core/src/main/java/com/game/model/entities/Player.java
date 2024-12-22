@@ -8,17 +8,16 @@ public class Player extends Entity {
 
     /**
      * Constructor to create a Player
-     * @param positionX Current X position
-     * @param positionY Current Y position
+     * @param tileX X coordinate of the tile on the TiledMap where the player will be placed on
+     * @param tileY Y coordinate of the tile on the TiledMap where the player will be placed on
      * @param spriteSheet Sprite sheet containing the sprite of the player
-     * @param worldMap The Tiled Map the entity will be rendered on
      */
-    public Player(float positionX, float positionY, SpriteSheet spriteSheet, WorldMap worldMap) {
-        super(positionX, positionY, spriteSheet, worldMap);
+    public Player(int tileX, int tileY, SpriteSheet spriteSheet, WorldMap worldMap) {
+        super(tileX, tileY, spriteSheet, worldMap);
     }
 
     @Override
-    public void update(float deltaTime) {
-        super.update(deltaTime);
+    public void update() {
+        super.update();
     }
 }

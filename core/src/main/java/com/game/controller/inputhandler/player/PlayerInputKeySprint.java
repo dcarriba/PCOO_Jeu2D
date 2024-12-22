@@ -11,7 +11,7 @@ public class PlayerInputKeySprint extends PlayerInputKey {
 
     @Override
     public void action(Player player) {
-        player.setMoveSpeed(player.getMoveSpeedDefault() * 2);
+        player.setMoveSpeed(player.getMoveSpeedDefault()*2);
     }
 
     public void revertAction(Player player){

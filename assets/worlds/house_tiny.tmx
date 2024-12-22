@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
+ <tileset firstgid="1" source="../tilesets/worldtiles/interior.tsx"/>
+ <layer id="1" name="ground" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRQE1QCsX0BrlAnIeG8+lgbzcQ96Dh3lF7h429K4F4FRBLMDIwSDFC2KvpYO8oGAWjYBSMAvoAAGFEE3s=
+  </data>
+ </layer>
+ <layer id="2" name="obstacles" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJwrZWBgKB3Fo3gUj+JRTDU8BYrpbe8mKHZjZGBwh2IPRtrbiwvQw14eRvrbqwW003MA7MUFBsJeRTqkq1E8ikfxKB7F9MEATlWOVg==
+  </data>
+ </layer>
+ <layer id="3" name="obstacles2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+  </data>
+ </layer>
+</map>

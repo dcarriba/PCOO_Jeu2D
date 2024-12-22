@@ -25,7 +25,14 @@ public class PlayScreenView {
         playScreen.getWorldMap().getRenderer().setView(playScreen.getGamecam()); // Set the view for the map renderer based on camera
         playScreen.getWorldMap().getRenderer().render(); // Render the map
 
+        // Set the projection matrix for the player (same camera as the map)
+        playScreen.getBatch().setProjectionMatrix(playScreen.getGamecam().combined);
 
+        // Begin the sprite batch for the player
+        playScreen.getBatch().begin();
+        // Draw player on top of the map
+        playScreen.getBatch().draw(playScreen.getPlayer().getEntityAnimation().getCurrentFrame(), playScreen.getPlayer().getPositionX(), playScreen.getPlayer().getPositionY(), playScreen.getWorldMap().getTileWidth(), playScreen.getWorldMap().getTileHeight());
+        playScreen.getBatch().end();
 
     }
 }

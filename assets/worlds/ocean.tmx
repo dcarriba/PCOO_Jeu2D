@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
+ <tileset firstgid="1" source="../tilesets/worldtiles/exterior.tsx"/>
+ <tileset firstgid="481" source="../tilesets/worldtiles/interior.tsx"/>
+ <layer id="1" name="ground" width="50" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2k0OgjAQhuHBE3BvT+LvNdAruFevIS5YFEgT6Vc6xfdNZkvyJCyaybSNWbtgvLXEgCNfOHyFw1c4fPXvjqPln9MKjpvln/sKjpfln/cKDkXnfi79XAXfwpEejmk40sMxDUd6OKYpHQfTvA9LOzrTvA9LO56meR+WdnxT/vO/hGM+HGnhmE/hWPINHDhw4MDh37FvtrGnfuy2safuGvbU41TvMRyacITh0IQjDIemmhyxvW9NjtjeF0dZx/itXJMjtoevyRELRxgOTTjCcGjCEYZDE46wVIfqpqTUHfKQ6qak1B3ykOqmpPb9riocvsLhKxy+wuGrrTg+kYG1rw==
+  </data>
+ </layer>
+ <layer id="2" name="obstacles" width="50" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2UsKwjAUBdBkpBPxswediJ9l6Doc6MANiOLMNfjZiHZ3vmLBUktt2qTvivfBJR2UksupoWDLGtOWtBzXi8HKUPY0su6r9r6zcXWgBz3oQQ960MPFYy3RGN8ep6THseE+vj20xrdHPAtZl9bt+UWpst+6HiHOK589NM8retCDHvSgBz2y+6oz2h6aPegR/p3X8tDsQQ+sHvQI16PKMxA9qjyDHlg96IHV4988VpKd5JDk2x6igns0PXpyb18yMM2Ob4+p3DuTzEF7lPW4Je/Tw2L20P4/qsqemzivtHrQA6sHPbB60AOrBz3KZ29f3wLnVPK+DdA9rnJ/R9auZGve19lB94h7jGWdSDap6+gHPcoMusc957fguwfPK6we9MDqQQ+sHvTA6kEPrB70+NxHiGnKA6UHPbCifV75Cj2wQg+s0AMr9MDKE00LAxM=
+  </data>
+ </layer>
+ <layer id="3" name="obstacles2" width="50" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt1rkVwCAMREHRq3EfPgoncaSUwIg3U8HfbCMAAAAAAAAAqOBofxfMub7+u/gOAIBd9PTLzqI/7Undb9EdAAAAAACrGJmUA0E=
+  </data>
+ </layer>
+</map>
