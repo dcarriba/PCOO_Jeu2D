@@ -60,11 +60,6 @@ public class WorldMap {
      * @return true if the tile isn't blocked (i.e. it is not an obstacle and an entity can walk on it)
      */
     public boolean isTileNotBlocked(int tileX, int tileY){
-        System.out.println("isTileNotBlocked() entered");
-        System.out.println(tileX);
-        System.out.println(tileY);
-        System.out.println();
-
         TiledMapTileLayer layer = (TiledMapTileLayer) tiledMap.getLayers().get("obstacles");
         if (layer != null){
             TiledMapTileLayer.Cell cell = layer.getCell(tileX, tiledMap.getProperties().get("height", Integer.class)-1-tileY);
