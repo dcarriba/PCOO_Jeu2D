@@ -1,5 +1,6 @@
 package com.game.view.screens;
 
+import com.game.model.entities.Enemy;
 import com.game.model.screens.PlayScreen;
 
 public class PlayScreenView {
@@ -28,10 +29,28 @@ public class PlayScreenView {
         // Set the projection matrix for the player (same camera as the map)
         playScreen.getBatch().setProjectionMatrix(playScreen.getGamecam().combined);
 
-        // Begin the sprite batch for the player
+        // Begin the sprite batch for the player and enemies
         playScreen.getBatch().begin();
         // Draw player on top of the map
-        playScreen.getBatch().draw(playScreen.getPlayer().getEntityAnimation().getCurrentFrame(), playScreen.getPlayer().getPositionX(), playScreen.getPlayer().getPositionY(), playScreen.getWorldMap().getTileWidth(), playScreen.getWorldMap().getTileHeight());
+        playScreen.getBatch().draw(
+            playScreen.getPlayer().getEntityAnimation().getCurrentFrame(),
+            playScreen.getPlayer().getPositionX(),
+            playScreen.getPlayer().getPositionY(),
+            playScreen.getWorldMap().getTileWidth(),
+            playScreen.getWorldMap().getTileHeight()
+        );
+        // Render all enemies
+        for (Enemy enemy : playScreen.getWorldMap().getEnemies()) {
+            // Render each enemy at its position
+            playScreen.getBatch().draw(
+                enemy.getEntityAnimation().getCurrentFrame(),
+                enemy.getPositionX(),
+                enemy.getPositionY(),
+                playScreen.getWorldMap().getTileWidth(),
+                playScreen.getWorldMap().getTileHeight()
+            );
+        }
+        // End the sprite batch
         playScreen.getBatch().end();
 
     }

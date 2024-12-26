@@ -1,4 +1,4 @@
-package com.game.controller.inputhandler.player;
+package com.game.model.inputhandler.player;
 
 import com.badlogic.gdx.Gdx;
 import com.game.model.entities.Player;

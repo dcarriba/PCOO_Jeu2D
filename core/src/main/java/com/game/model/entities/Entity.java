@@ -1,9 +1,7 @@
 package com.game.model.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.game.model.graphics.EntityAnimation;
-import com.game.model.graphics.SpriteSheet;
-import com.game.model.graphics.WorldMap;
+import com.game.model.map.WorldMap;
 
 /** The abstract <code>Entity</code> class represents an entity */
 public abstract class Entity {
@@ -33,6 +31,7 @@ public abstract class Entity {
      * @param tileX X coordinate of the tile on the TiledMap where the entity will be placed on
      * @param tileY Y coordinate of the tile on the TiledMap where the entity will be placed on
      * @param spriteSheet Sprite sheet containing the sprite of the entity
+     * @param worldMap World Map where the entity is on
      */
     public Entity(int tileX, int tileY, SpriteSheet spriteSheet, WorldMap worldMap) {
         this.worldMap = worldMap;

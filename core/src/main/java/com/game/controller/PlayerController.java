@@ -1,7 +1,7 @@
 package com.game.controller;
 
 import com.game.model.entities.Player;
-import com.game.controller.inputhandler.player.PlayerInputHandler;
+import com.game.model.inputhandler.player.PlayerInputHandler;
 
 public class PlayerController {
     private final Player player;

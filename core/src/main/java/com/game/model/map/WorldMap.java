@@ -1,9 +1,13 @@
-package com.game.model.graphics;
+package com.game.model.map;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.game.model.entities.Enemy;
+import com.game.model.entities.EnemyFactory;
+
+import java.util.List;
 
 /** The <code>WorldMap</code> class represents a Tiled Map and its attributes (notably its renderer) */
 public class WorldMap {
@@ -17,6 +21,8 @@ public class WorldMap {
     private TiledMap tiledMap;
     /** Renderer for the Tiled Map */
     private OrthogonalTiledMapRenderer renderer;
+    /** The enemies present on the WorldMap */
+    private final List<Enemy> enemies;
 
     /**
      * Constructor to create a Worldmap
@@ -31,6 +37,7 @@ public class WorldMap {
         this.renderer = new OrthogonalTiledMapRenderer(this.tiledMap);
         this.tileHeight = tileHeight;
         this.tileWidth = tileWidth;
+        this.enemies = new EnemyFactory(this).getEnemies();
     }
 
     public float getTileWidth() {
@@ -53,6 +60,10 @@ public class WorldMap {
         return renderer;
     }
 
+    public List<Enemy> getEnemies() {
+        return enemies;
+    }
+
     /**
      * Used to check if a tile isn't blocked (i.e. it is not an obstacle and an entity can walk on it)
      * @param tileX the X coordinate of the tile on the TiledMap
@@ -64,9 +75,19 @@ public class WorldMap {
         if (layer != null){
             TiledMapTileLayer.Cell cell = layer.getCell(tileX, tiledMap.getProperties().get("height", Integer.class)-1-tileY);
             // If the tile is null, the tile is not occupied, and thus not blocked
-            return cell == null || cell.getTile() == null;
+            return (cell == null || cell.getTile() == null) && isTileNotBlockedByEnemy(tileX, tileY);
         }
-        return true;
+        return isTileNotBlockedByEnemy(tileX, tileY);
+    }
+
+    public boolean isTileNotBlockedByEnemy(int tileX, int tileY) {
+        // Check if any enemy is at the given tile coordinates
+        for (Enemy enemy : this.enemies) {
+            if (enemy.getTileX() == tileX && enemy.getTileY() == tileY) {
+                return false; // This tile is occupied by an enemy
+            }
+        }
+        return true; // Tile is not blocked by any enemy
     }
 
     /**

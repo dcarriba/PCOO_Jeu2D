@@ -6,14 +6,18 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.controller.PlayerController;
 import com.game.controller.WorldMapController;
+import com.game.model.entities.Enemy;
+import com.game.model.entities.EnemyFactory;
 import com.game.model.entities.Player;
-import com.game.model.graphics.SpriteSheet;
-import com.game.model.graphics.WorldMap;
+import com.game.model.entities.SpriteSheet;
+import com.game.model.map.WorldMap;
 import com.game.model.scenes.Hud;
 import com.game.model.screens.PlayScreen;
 import com.game.view.scenes.HudView;
 import com.game.view.screens.PlayScreenView;
 import com.game.model.settings.Settings;
+
+import java.util.List;
 
 /** The <code>Mygame</code> is the main game class. It implements {@link com.badlogic.gdx.ApplicationListener} */
 public class Mygame implements ApplicationListener {
