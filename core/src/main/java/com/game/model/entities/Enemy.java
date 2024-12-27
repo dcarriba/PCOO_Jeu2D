@@ -6,7 +6,6 @@ public class Enemy extends Entity {
 
     /**
      * Constructor to create an Enemy
-     *
      * @param tileX X coordinate of the tile on the TiledMap where the enemy will be placed on
      * @param tileY Y coordinate of the tile on the TiledMap where the enemy will be placed on
      * @param spriteSheet Sprite sheet containing the sprite of the enemy

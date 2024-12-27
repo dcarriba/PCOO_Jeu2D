@@ -1,5 +1,7 @@
 package com.game.model.directions;
 
+import com.game.model.entities.Player;
+
 /**
  * Represents the "right" direction in the game.
  * <p>
@@ -22,5 +24,12 @@ public class RightDirection implements Direction {
     @Override
     public int getSpriteSheetRow() {
         return 2;
+    }
+
+    @Override
+    public void attack(Player player) {
+        if (player.getWorldMap().isTileBlockedByEnemy(player.getTileX() + 1, player.getTileY())) {
+            player.getWorldMap().killEnemy(player.getWorldMap().getEnemy(player.getTileX() + 1, player.getTileY()));
+        }
     }
 }

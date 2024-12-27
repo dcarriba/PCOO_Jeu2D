@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="4">
  <tileset firstgid="1" source="../tilesets/worldtiles/interior.tsx"/>
  <tileset firstgid="481" source="../tilesets/worldtiles/exterior.tsx"/>
  <layer id="1" name="ground" width="30" height="30">
@@ -26,5 +26,14 @@
     <property name="whenKeyPressed" value="PlayerInputKeyLeft"/>
    </properties>
   </object>
+  <object id="3" x="304" y="224" width="16" height="32">
+   <properties>
+    <property name="nextWorldMapName" value="ocean.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="13"/>
+    <property name="nextWorldMapTileY" type="int" value="40"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyRight"/>
+   </properties>
+  </object>
  </objectgroup>
+ <objectgroup id="5" name="enemies"/>
 </map>

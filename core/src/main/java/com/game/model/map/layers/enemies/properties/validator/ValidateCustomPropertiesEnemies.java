@@ -1,48 +1,45 @@
-package com.game.model.map.layers.teleport.objects.properties.validator;
+package com.game.model.map.layers.enemies.properties.validator;
 
 import com.badlogic.gdx.maps.MapProperties;
-import com.game.model.map.layers.teleport.objects.properties.custom.NextWorldMapNameProperty;
-import com.game.model.map.layers.teleport.objects.properties.custom.NextWorldMapTileXProperty;
-import com.game.model.map.layers.teleport.objects.properties.custom.NextWorldMapTileYProperty;
-import com.game.model.map.layers.teleport.objects.properties.custom.WhenKeyPressedProperty;
+import com.game.model.map.layers.enemies.properties.custom.SpriteSheetImageName;
+import com.game.model.map.validator.properties.NotNullPropertiesValidator;
+import com.game.model.map.validator.properties.PresencePropertiesValidator;
+import com.game.model.map.validator.properties.PropertiesValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidateCustomProperties {
+public class ValidateCustomPropertiesEnemies {
     private final List<String> customPropertyNames = createCustomPropertyNamesList();
 
-    public ValidateCustomProperties() {
+    public ValidateCustomPropertiesEnemies() {
     }
 
     private List<String> createCustomPropertyNamesList(){
         List<String> customProperties = new ArrayList<>();
-        customProperties.add(new NextWorldMapNameProperty().getName());
-        customProperties.add(new NextWorldMapTileXProperty().getName());
-        customProperties.add(new NextWorldMapTileYProperty().getName());
-        customProperties.add(new WhenKeyPressedProperty().getName());
+        customProperties.add(new SpriteSheetImageName().getName());
         return customProperties;
     }
 
     /**
      * Checks if a property exist and has a defined value amongst the properties of the object from
-     * the teleport object layer.
-     * @param properties the properties of the object from the teleport object layer
+     * the enemies object layer.
+     * @param properties the properties of the object from the enemies object layer
      * @param propertyName the name of the property
      * @return  if property given as an argument (propertyName) is present and has a defined value
-     *          amongst the properties of the object from the teleport object layer.
+     *          amongst the properties of the object from the enemies object layer.
      */
     private boolean validateProperty(MapProperties properties, String propertyName){
-        Validator presence = new PresenceValidator();
-        Validator notNull = new NotNullValidator();
+        PropertiesValidator presence = new PresencePropertiesValidator();
+        PropertiesValidator notNull = new NotNullPropertiesValidator();
         presence.setNext(notNull);
         return presence.validate(properties, propertyName);
     }
 
     /**
      * Checks if all properties in the customPropertyNames List exist and have a defined value amongst the properties of
-     * the object from the teleport object layer.
-     * @param properties the properties of the object from the teleport object layer
+     * the object from the enemies object layer.
+     * @param properties the properties of the object from the enemies object layer
      * @return if all properties in the customPropertyNames List are present and have a defined value.
      */
     public boolean validate(MapProperties properties){
@@ -52,5 +49,4 @@ public class ValidateCustomProperties {
         }
         return result;
     }
-
 }

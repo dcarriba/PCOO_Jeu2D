@@ -1,18 +1,20 @@
-package com.game.model.map.layers.teleport.objects.properties.validator;
+package com.game.model.map.validator.properties;
 
 import com.badlogic.gdx.maps.MapProperties;
 
-public class NotNullValidator implements Validator{
-    private Validator next;
+import java.util.Objects;
+
+public class NotNullPropertiesValidator implements PropertiesValidator {
+    private PropertiesValidator next;
 
     @Override
-    public void setNext(Validator next) {
+    public void setNext(PropertiesValidator next) {
         this.next = next;
     }
 
     @Override
     public boolean validate(MapProperties properties, String propertyName) {
-        if (properties.get(propertyName) != null){
+        if (properties.get(propertyName) != null && !Objects.equals(properties.get(propertyName), "")){
             if (next != null){
                 return next.validate(properties, propertyName);
             } else {

@@ -1,4 +1,4 @@
-package com.game.controller;
+package com.game.controller.player;
 
 import com.game.model.entities.Player;
 import com.game.model.inputhandler.player.PlayerInputHandler;

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="38">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="52">
  <tileset firstgid="1" source="../tilesets/worldtiles/exterior.tsx"/>
  <tileset firstgid="481" source="../tilesets/worldtiles/interior.tsx"/>
  <layer id="1" name="ground" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt3M1Nw0AURtGBCiKgEKAQoEUawdSBgB6ABrAXSF6EeIh/5iM6i7OKE9vvKpqxFGV3VsoOAAAAAAAAAGCPi97lhKuA62ztqZTycl7Kc1n3PNe9mwm3AfNobejRFT1S6JFFjyx6ZNEjix5Z9MiyVY+73v2Eh4B5tLZVD/T4j/TIokcWPbLokUWPLHpk0SOLHln0yKJHFj2y6FHno5/PZ+9r5Tnp8XePZT3dyJrnqdF6zrWG36uN53aKhntsPedab2Xa+N5qjp/7vjU+q/Wcl3TsOrDk+mEt0iOVHln0yKJHlrk9Dj1/DHvR314b6/RYtMdS9Fimx9znjx/vekSsH+iRSo8sNfukfazB6/ewJ2rv9ci9kB5ZrB9Z9MiiRxY9suiRRY8semTRI4seWfTIokcWPbLokUWPLHpk0SPLVv+HTH0P3w8AAAAAAAAAOG3f3XL00g==
+   eJzt3N1NwzAYhlHDBBUwCDAIMAZrsQhlDgTsACxAcoGUCyCmjeO31bk4V/2x8j2q7EhtNyelbAAAAAAAAACAg3O/whpng/MZFwGz6O2xlPJ8WspTabvO5eBqxnXAPHobe2yLHin0yKJHFj2y6JFFjyx6ZFmrx83gdsZdwDx6W6sHehwiPbLokUWPLHpk0SOLHln0yKJHFj2y6JFFjyx61Hkf5vMx+Gw8Jz3+76G0s51ouU6N3nOuNX5fbTq3YzReY+8513ot86bXVvP8fV/X4r16z3lJu+4DS+4f9iI9UumRRY8sLXvU/j5Ej+V6/HX/MZ5Ff3tsaqvHoj2WoscyPfa9//j2pkfEfo4eqfTIUnNO+ok9uH0PZ6L+XnY8C+mRxf6RRY8semTRI4seWfTIokcWPbLokUWPLHpk0SOLHln0yKJHFj2yrPV/yNT38PkAAAAAAAAAgOP2BRq99YI=
   </data>
  </layer>
  <layer id="2" name="obstacles" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer id="3" name="obstacles2" width="100" height="100">
@@ -20,10 +20,74 @@
  <objectgroup id="7" name="teleport">
   <object id="37" x="1248" y="736" width="16" height="16">
    <properties>
-    <property name="nextWorldMapName" value="passage_horizontal.tmx"/>
+    <property name="nextWorldMapName" value="passage_horizontal_east.tmx"/>
     <property name="nextWorldMapTileX" type="int" value="10"/>
     <property name="nextWorldMapTileY" type="int" value="14"/>
     <property name="whenKeyPressed" value="PlayerInputKeyRight"/>
+   </properties>
+  </object>
+  <object id="45" x="848" y="832" width="16" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="house_medium.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="19"/>
+    <property name="nextWorldMapTileY" type="int" value="17"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
+   </properties>
+  </object>
+  <object id="46" x="720" y="1248" width="16" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="passage_vertical_south.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="14"/>
+    <property name="nextWorldMapTileY" type="int" value="10"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyDown"/>
+   </properties>
+  </object>
+  <object id="47" x="336" y="736" width="16" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="passage_horizontal_west.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="19"/>
+    <property name="nextWorldMapTileY" type="int" value="14"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyLeft"/>
+   </properties>
+  </object>
+  <object id="48" x="720" y="320" width="16" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="passage_vertical_north.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="14"/>
+    <property name="nextWorldMapTileY" type="int" value="19"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="enemies">
+  <object id="38" x="704" y="720" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="39" x="800" y="848" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="40" x="800" y="720" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="41" x="784" y="768" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="49" x="592" y="704" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="51" x="464" y="768" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
  </objectgroup>

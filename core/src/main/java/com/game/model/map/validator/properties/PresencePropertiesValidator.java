@@ -1,12 +1,12 @@
-package com.game.model.map.layers.teleport.objects.properties.validator;
+package com.game.model.map.validator.properties;
 
 import com.badlogic.gdx.maps.MapProperties;
 
-public class PresenceValidator implements Validator{
-    private Validator next;
+public class PresencePropertiesValidator implements PropertiesValidator {
+    private PropertiesValidator next;
 
     @Override
-    public void setNext(Validator next) {
+    public void setNext(PropertiesValidator next) {
         this.next = next;
     }
 

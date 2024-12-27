@@ -1,5 +1,7 @@
 package com.game.model.directions;
 
+import com.game.model.entities.Player;
+
 /**
  * Represents the "up" direction in the game.
  * <p>
@@ -22,5 +24,12 @@ public class UpDirection implements Direction {
     @Override
     public int getSpriteSheetRow() {
         return 3;
+    }
+
+    @Override
+    public void attack(Player player) {
+        if (player.getWorldMap().isTileBlockedByEnemy(player.getTileX(), player.getTileY() - 1)) {
+            player.getWorldMap().killEnemy(player.getWorldMap().getEnemy(player.getTileX(), player.getTileY() - 1));
+        }
     }
 }

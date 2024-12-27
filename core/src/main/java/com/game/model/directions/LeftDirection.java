@@ -1,12 +1,9 @@
 package com.game.model.directions;
 
+import com.game.model.entities.Player;
+
 /**
  * Represents the "left" direction in the game.
- * <p>
- * This class implements the {@link Direction} interface and provides the specific
- * sprite sheet row index for the "left" direction. This index is used to correctly
- * animate the character when moving left.
- * </p>
  */
 public class LeftDirection implements Direction {
 
@@ -22,5 +19,12 @@ public class LeftDirection implements Direction {
     @Override
     public int getSpriteSheetRow() {
         return 1;
+    }
+
+    @Override
+    public void attack(Player player) {
+        if (player.getWorldMap().isTileBlockedByEnemy(player.getTileX() - 1, player.getTileY())) {
+            player.getWorldMap().killEnemy(player.getWorldMap().getEnemy(player.getTileX() - 1, player.getTileY()));
+        }
     }
 }

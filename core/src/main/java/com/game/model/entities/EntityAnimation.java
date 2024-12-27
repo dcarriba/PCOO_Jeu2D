@@ -14,6 +14,8 @@ public class EntityAnimation {
     private float walkAnimationState;
     /** The current used sprite in the walking animation */
     private TextureRegion currentFrame;
+    /** The direction the entity is facing */
+    private Direction currentFacingDirection;
 
     /**
      * Constructor to create an EntityAnimation
@@ -36,6 +38,7 @@ public class EntityAnimation {
         System.arraycopy(temp[spriteSheet.getCharacterRow() + row], spriteSheet.getCharacterColumn(), walkFrames, 0, 3);
         walkFrames[3] = walkFrames[1];
         walkAnimation = new Animation<>(0.25f, walkFrames);
+        currentFacingDirection = direction;
     }
 
     /** Sets the entity to be standing still */
@@ -60,5 +63,9 @@ public class EntityAnimation {
     /** Increments the walkAnimationState attribute for the next animation frame */
     public void nextWalkAnimationState(){
         walkAnimationState += Gdx.graphics.getDeltaTime();
+    }
+
+    public Direction getCurrentFacingDirection() {
+        return currentFacingDirection;
     }
 }

@@ -1,4 +1,4 @@
-package com.game.model.map.layers.teleport.objects.properties.custom.possiblevalues;
+package com.game.model.map.layers.teleport.properties.custom.possiblevalues;
 
 public abstract class PossibleValue {
     private final String valueName;

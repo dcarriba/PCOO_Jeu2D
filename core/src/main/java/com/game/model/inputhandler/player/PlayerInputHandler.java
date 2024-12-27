@@ -43,6 +43,7 @@ public class PlayerInputHandler {
         inputKeyList.add(new PlayerInputKeyDown());
         inputKeyList.add(new PlayerInputKeyRight());
         inputKeyList.add(new PlayerInputKeyLeft());
+        inputKeyList.add(new PlayerInputKeyAttack());
         return inputKeyList;
     }
 }

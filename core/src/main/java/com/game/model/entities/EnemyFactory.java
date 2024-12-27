@@ -1,6 +1,13 @@
 package com.game.model.entities;
 
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.math.Rectangle;
 import com.game.model.map.WorldMap;
+import com.game.model.map.layers.enemies.properties.validator.ValidateCustomPropertiesEnemies;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +24,8 @@ public class EnemyFactory {
     public EnemyFactory(WorldMap worldMap) {
         this.worldMap = worldMap;
         this.enemies = new ArrayList<>();
-        this.createMultipleEnemies();
+//        this.createMultipleEnemies();
+        this.createEnemies();
     }
 
     /**
@@ -25,21 +33,34 @@ public class EnemyFactory {
      * @param tileX X coordinate of the tile where the enemy will be placed
      * @param tileY Y coordinate of the tile where the enemy will be placed
      */
-    private void createEnemy(int tileX, int tileY) {
-        SpriteSheet spriteSheet = new SpriteSheet("tilesets/characterstiles/orcs_1.png", 16, 16, 0, 3);
+    private void createEnemy(int tileX, int tileY, String spriteSheetPath) {
+        SpriteSheet spriteSheet = new SpriteSheet(spriteSheetPath, 16, 16, 0, 3);
         Enemy enemy = new Enemy(tileX, tileY, spriteSheet, this.worldMap);
         this.enemies.add(enemy);
     }
 
-    /**
-     * Creates multiple enemies in predefined positions (for example, hardcoded or random)
-     * This can be expanded to dynamically place enemies.
-     */
-    private void createMultipleEnemies() {
-        createEnemy(44, 45);
-        createEnemy(50, 53);
-        createEnemy(55, 60);
-        createEnemy(60, 63);
+    /** Creates the enemies based on the given locations in the "enemies" object layer of the TiledMap */
+    private void createEnemies(){
+        MapLayer enemiesLayer = worldMap.getTiledMap().getLayers().get("enemies");  // Object layer for teleporters
+        if (enemiesLayer != null) {
+            // Iterate over all objects in the teleport layer
+            for (MapObject object : enemiesLayer.getObjects()) {
+                // Check if the object is a rectangle
+                if (object instanceof RectangleMapObject) {
+                    RectangleMapObject rectangleObject = (RectangleMapObject) object;
+                    Rectangle rect = rectangleObject.getRectangle();
+                    MapProperties properties = rectangleObject.getProperties();
+                    // Check if all the required custom properties exist and have a defined value
+                    if (new ValidateCustomPropertiesEnemies().validate(properties)){
+                    createEnemy(
+                        (int) (rect.getX()/worldMap.getTileWidth()),
+                        (int) ((-1)*(rect.getY()/worldMap.getTileHeight() - this.worldMap.getTiledMap().getProperties().get("height", Integer.class) + 1)),
+                        "tilesets/characterstiles/" + properties.get("spriteSheetImageName")
+                    );
+                    }
+                }
+            }
+        }
     }
 
     /**

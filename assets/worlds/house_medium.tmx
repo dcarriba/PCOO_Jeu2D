@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2">
  <tileset firstgid="1" source="../tilesets/worldtiles/interior.tsx"/>
  <layer id="1" name="ground" width="40" height="30">
   <data encoding="base64" compression="zlib">
@@ -16,4 +16,15 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
   </data>
  </layer>
+ <objectgroup id="4" name="teleport">
+  <object id="1" x="288" y="272" width="32" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="city.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="53"/>
+    <property name="nextWorldMapTileY" type="int" value="52"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyDown"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="enemies"/>
 </map>

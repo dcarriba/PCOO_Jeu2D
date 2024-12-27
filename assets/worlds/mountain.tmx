@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="6">
+ <tileset firstgid="1" source="../tilesets/worldtiles/exterior.tsx"/>
+ <tileset firstgid="481" source="../tilesets/worldtiles/interior.tsx"/>
+ <layer id="1" name="ground" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzkEJAAAIBLDDbPYPYBpjiLDH/uskDQC8NHV/AOCvBfI476k=
+  </data>
+ </layer>
+ <layer id="2" name="obstacles" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjZ2Rg4ABidjrTqkCsNgA0vf056t9R/476l3o0MWAmEeriGCGYWP+Saq8HkO2JQ18cjfybToR6Wvi3FUrX4dFH7/gFgWSgukogTqFB/OIDAkAsCMRCDPT1rx4Q6wOxAQP1/PuOCHWzgOpqgHgHFeMXZC8M4wO0yr+EADXT83Zo+BHCO6hcXpECqOlfUsCof0f9O+pfygGx/gUAK/ZDrg==
+  </data>
+ </layer>
+ <layer id="3" name="obstacles2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzqENAEAIwEAY/ZkcwQIvSDB3prYRAMCGl9PK2w8A+NXn/AEG
+  </data>
+ </layer>
+ <objectgroup id="4" name="teleport">
+  <object id="1" x="288" y="256" width="16" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="passage_horizontal_west.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="10"/>
+    <property name="nextWorldMapTileY" type="int" value="14"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyRight"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="enemies">
+  <object id="2" x="304" y="192" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="3" x="160" y="160" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="4" x="160" y="304" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+  <object id="5" x="304" y="288" width="16" height="16">
+   <properties>
+    <property name="spriteSheetImageName" value="orcs_1.png"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

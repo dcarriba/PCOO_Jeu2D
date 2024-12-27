@@ -4,12 +4,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.game.model.entities.Enemy;
 import com.game.model.entities.Player;
 import com.game.model.map.WorldMap;
 import com.game.model.settings.Settings;
-
-import java.util.List;
 
 public class PlayScreen {
     private final SpriteBatch batch;

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="3">
+ <tileset firstgid="1" source="../tilesets/worldtiles/interior.tsx"/>
+ <tileset firstgid="481" source="../tilesets/worldtiles/exterior.tsx"/>
+ <layer id="1" name="ground" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhB3KBOA+KQxgZGMIYEfx8GtrbDcQ9OHDvqL2j9o7aO6jtXQnEq6BYAlhmSDEi+KtpaO8oGAWjYBQMJAAA3GQqcQ==
+  </data>
+ </layer>
+ <layer id="2" name="obstacles" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzTYmZg0BrFo3gUj2IScCnDwGBS3LeDkYFhNhCjg5lAsWuMpJlHir0gsB2LvTCx4Wbvazz2vqahvZyMuO3lpGH8quOxV300XQ1Ke0kpY0Dlxk4s9l5FKjeoXV6N4lE8ikcxDA9U+woAERi/5Q==
+  </data>
+ </layer>
+ <layer id="3" name="obstacles2" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztyaENAAAIA7D9L7kYPYsjaW0TAPhljgcAtAVaYAEl
+  </data>
+ </layer>
+ <objectgroup id="4" name="teleport">
+  <object id="1" x="224" y="304" width="32" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="beach.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="15"/>
+    <property name="nextWorldMapTileY" type="int" value="10"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyDown"/>
+   </properties>
+  </object>
+  <object id="2" x="224" y="160" width="32" height="16">
+   <properties>
+    <property name="nextWorldMapName" value="city.tmx"/>
+    <property name="nextWorldMapTileX" type="int" value="45"/>
+    <property name="nextWorldMapTileY" type="int" value="78"/>
+    <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="enemies"/>
+</map>

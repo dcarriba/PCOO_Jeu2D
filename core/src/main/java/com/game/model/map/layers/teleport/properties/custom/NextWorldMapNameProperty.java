@@ -1,4 +1,4 @@
-package com.game.model.map.layers.teleport.objects.properties.custom;
+package com.game.model.map.layers.teleport.properties.custom;
 
 public class NextWorldMapNameProperty {
     private final String name;

@@ -1,12 +1,12 @@
-package com.game.model.map.layers.teleport.objects.properties.custom;
+package com.game.model.map.layers.teleport.properties.custom;
 
 import com.badlogic.gdx.maps.MapProperties;
 import com.game.model.inputhandler.player.*;
-import com.game.model.map.layers.teleport.objects.properties.custom.possiblevalues.PossibleValue;
-import com.game.model.map.layers.teleport.objects.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyDown;
-import com.game.model.map.layers.teleport.objects.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyLeft;
-import com.game.model.map.layers.teleport.objects.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyRight;
-import com.game.model.map.layers.teleport.objects.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyUp;
+import com.game.model.map.layers.teleport.properties.custom.possiblevalues.PossibleValue;
+import com.game.model.map.layers.teleport.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyDown;
+import com.game.model.map.layers.teleport.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyLeft;
+import com.game.model.map.layers.teleport.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyRight;
+import com.game.model.map.layers.teleport.properties.custom.possiblevalues.whenkeypressedproperty.ValuePlayerInputKeyUp;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,9 @@
 package com.game.model.directions;
 
+import com.game.model.entities.Player;
+
 /**
  * Represents the "down" direction in the game.
- * <p>
- * This class implements the {@link Direction} interface and provides the specific
- * sprite sheet row index for the "down" direction. This index is used to correctly
- * animate the character when moving down.
- * </p>
  */
 public class DownDirection implements Direction {
 
@@ -22,5 +19,12 @@ public class DownDirection implements Direction {
     @Override
     public int getSpriteSheetRow() {
         return 0;
+    }
+
+    @Override
+    public void attack(Player player){
+        if (player.getWorldMap().isTileBlockedByEnemy(player.getTileX(), player.getTileY() + 1)) {
+            player.getWorldMap().killEnemy(player.getWorldMap().getEnemy(player.getTileX(), player.getTileY() + 1));
+        }
     }
 }
