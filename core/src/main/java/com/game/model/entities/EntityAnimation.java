@@ -6,23 +6,30 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.game.model.directions.Direction;
 import com.game.model.directions.DownDirection;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+
 /** The <code>EntityAnimation</code> class represents the sprites of an entity used for the walking animation */
-public class EntityAnimation {
+public class EntityAnimation implements Serializable {
     /** Contains all sprites needed for the walking animation */
-    private Animation<TextureRegion> walkAnimation;
+    private transient Animation<TextureRegion> walkAnimation;
     /** Number representing the current state of the walking animation (i.e. the frame that should be used) */
-    private float walkAnimationState;
+    private transient float walkAnimationState;
     /** The current used sprite in the walking animation */
-    private TextureRegion currentFrame;
+    private transient TextureRegion currentFrame;
     /** The direction the entity is facing */
     private Direction currentFacingDirection;
+    /** Sprite sheet containing the sprite of the entity */
+    private final SpriteSheet spriteSheet;
 
     /**
      * Constructor to create an EntityAnimation
      * @param spriteSheet Sprite sheet containing the sprite of the entity
      */
     public EntityAnimation(SpriteSheet spriteSheet) {
-        setWalkAnimation(new DownDirection(), spriteSheet);
+        this.spriteSheet = spriteSheet;
+        setWalkAnimation(new DownDirection(), this.spriteSheet);
         setStandingFrame();
     }
 
@@ -67,5 +74,15 @@ public class EntityAnimation {
 
     public Direction getCurrentFacingDirection() {
         return currentFacingDirection;
+    }
+
+    /**
+     * Custom deserialization to initialize transient fields after the object is deserialized
+     * @param ois The ObjectInputStream
+     */
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        ois.defaultReadObject();  // Deserialize the non-transient fields
+        setWalkAnimation(currentFacingDirection, spriteSheet); // Default direction is DownDirection
+        setStandingFrame();
     }
 }

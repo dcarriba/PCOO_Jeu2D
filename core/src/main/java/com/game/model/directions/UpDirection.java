@@ -10,7 +10,7 @@ import com.game.model.entities.Player;
  * animate the character when moving up.
  * </p>
  */
-public class UpDirection implements Direction {
+public class UpDirection extends Direction {
 
     /**
      * Retrieves the sprite sheet row corresponding to the "up" direction.

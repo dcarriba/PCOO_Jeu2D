@@ -14,5 +14,4 @@ public class Enemy extends Entity {
     public Enemy(int tileX, int tileY, SpriteSheet spriteSheet, WorldMap worldMap) {
         super(tileX, tileY, spriteSheet, worldMap);
     }
-
 }

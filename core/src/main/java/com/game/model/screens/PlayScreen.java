@@ -8,7 +8,7 @@ import com.game.model.entities.Player;
 import com.game.model.map.WorldMap;
 import com.game.model.settings.Settings;
 
-public class PlayScreen {
+public class PlayScreen implements Screen {
     private final SpriteBatch batch;
     private final WorldMap worldMap;
     private final Player player;

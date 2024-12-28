@@ -5,7 +5,7 @@ import com.game.model.entities.Player;
 /**
  * Represents the "down" direction in the game.
  */
-public class DownDirection implements Direction {
+public class DownDirection extends Direction {
 
     /**
      * Retrieves the sprite sheet row corresponding to the "down" direction.

@@ -2,10 +2,16 @@ package com.game.model.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+
 /** The <code>SpriteSheet</code> class represents a spritesheet containing all the sprites of an entity */
-public class SpriteSheet {
+public class SpriteSheet implements Serializable {
+    /** The path to the sprite sheet */
+    private final String spriteSheetPath;
     /** The Texture object representing the loaded sprite sheet */
-    private final Texture texture;
+    private transient Texture texture;
     /** Width of each frame in the sprite sheet */
     private final int frameWidth;
     /** Height of each frame in the sprite sheet */
@@ -24,7 +30,8 @@ public class SpriteSheet {
      * @param characterColumn The column in which the first sprite of the character is on the spritesheet
      */
     public SpriteSheet(String spriteSheetPath, int frameWidth, int frameHeight, int characterRow, int characterColumn) {
-        this.texture = new Texture(spriteSheetPath); // Loads the texture from the path
+        this.spriteSheetPath = spriteSheetPath;
+        this.texture = new Texture(this.spriteSheetPath); // Loads the texture from the path
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.characterRow = characterRow;
@@ -47,11 +54,26 @@ public class SpriteSheet {
         return characterColumn;
     }
 
+    public String getSpriteSheetPath() {
+        return spriteSheetPath;
+    }
+
     public Texture getTexture() {
         return texture;
     }
 
+    /**
+     * Custom deserialization to initialize transient fields after the object is deserialized
+     * @param ois The ObjectInputStream
+     */
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        ois.defaultReadObject();  // Deserialize the non-transient fields
+        texture = new Texture(spriteSheetPath); // Reinitialize the transient texture field
+    }
+
     public void dispose() {
-        texture.dispose(); // Disposes the texture when no longer needed
+        if (texture != null) {
+            texture.dispose(); // Disposes the texture when no longer needed
+        }
     }
 }

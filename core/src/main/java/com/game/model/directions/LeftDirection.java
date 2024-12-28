@@ -5,7 +5,7 @@ import com.game.model.entities.Player;
 /**
  * Represents the "left" direction in the game.
  */
-public class LeftDirection implements Direction {
+public class LeftDirection extends Direction {
 
     /**
      * Retrieves the sprite sheet row corresponding to the "left" direction.

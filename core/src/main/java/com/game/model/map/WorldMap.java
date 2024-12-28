@@ -7,22 +7,25 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.game.model.entities.Enemy;
 import com.game.model.entities.EnemyFactory;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 /** The <code>WorldMap</code> class represents a Tiled Map and its attributes (notably its renderer) */
-public class WorldMap {
+public class WorldMap implements Serializable {
     /** Width of one tile in the tiledMap */
     private float tileWidth;
     /** Height of one tile in the tiledMap */
     private float tileHeight;
     /** Path to the Tiled Map */
-    private String worldMapPath;
+    private String tiledMapPath;
     /** The TiledMap */
-    private TiledMap tiledMap;
+    private transient TiledMap tiledMap;
     /** Renderer for the Tiled Map */
-    private OrthogonalTiledMapRenderer renderer;
+    private transient OrthogonalTiledMapRenderer renderer;
     /** The enemies present on the WorldMap */
     private List<Enemy> enemies;
     /** Contains all killed enemies */
@@ -30,14 +33,14 @@ public class WorldMap {
 
     /**
      * Constructor to create a Worldmap
-     * @param worldMapPath path to the TiledMap
+     * @param tiledMapPath path to the TiledMap
      * @param tileHeight height of one tile
      * @param tileWidth width of one tile
      */
-    public WorldMap(String worldMapPath, float tileHeight, float tileWidth) {
-        this.worldMapPath = worldMapPath;
+    public WorldMap(String tiledMapPath, float tileHeight, float tileWidth) {
+        this.tiledMapPath = tiledMapPath;
         TmxMapLoader maploader = new TmxMapLoader();
-        this.tiledMap = maploader.load(this.worldMapPath);
+        this.tiledMap = maploader.load(this.tiledMapPath);
         this.renderer = new OrthogonalTiledMapRenderer(this.tiledMap);
         this.tileHeight = tileHeight;
         this.tileWidth = tileWidth;
@@ -53,8 +56,8 @@ public class WorldMap {
         return tileHeight;
     }
 
-    public String getWorldMapPath() {
-        return worldMapPath;
+    public String getTiledMapPath() {
+        return tiledMapPath;
     }
 
     public TiledMap getTiledMap() {
@@ -95,7 +98,7 @@ public class WorldMap {
      */
     public void killEnemy(Enemy enemy){
         enemies.remove(enemy);
-        killedEnemies.add(worldMapPath + enemy.getTileX() + "," + enemy.getTileY());
+        killedEnemies.add(tiledMapPath + enemy.getTileX() + "," + enemy.getTileY());
         enemy.dispose();
     }
 
@@ -105,7 +108,7 @@ public class WorldMap {
      * @return true if the enemy has been killed, false otherwise
      */
     public boolean hasEnemyBeenKilled(Enemy enemy) {
-        return killedEnemies.contains(worldMapPath + enemy.getTileX() + "," + enemy.getTileY());
+        return killedEnemies.contains(tiledMapPath + enemy.getTileX() + "," + enemy.getTileY());
     }
 
     /**
@@ -143,15 +146,15 @@ public class WorldMap {
     /**
      * Updates the WorldMap <br>
      * Disposes the previous TiledMap and loads the new one.
-     * @param worldMapPath the path to the new TiledMap
+     * @param tiledMapPath the path to the new TiledMap
      * @param tileHeight height of one tile in the new map
      * @param tileWidth width of one tile in the new map
      */
-    public void updateWorldMap(String worldMapPath, float tileHeight, float tileWidth){
+    public void updateWorldMap(String tiledMapPath, float tileHeight, float tileWidth){
         this.dispose();
-        this.worldMapPath = worldMapPath;
+        this.tiledMapPath = tiledMapPath;
         TmxMapLoader maploader = new TmxMapLoader();
-        this.tiledMap = maploader.load(this.worldMapPath);
+        this.tiledMap = maploader.load(this.tiledMapPath);
         this.renderer = new OrthogonalTiledMapRenderer(this.tiledMap);
         this.tileHeight = tileHeight;
         this.tileWidth = tileWidth;
@@ -159,11 +162,20 @@ public class WorldMap {
         this.enemies.removeIf(this::hasEnemyBeenKilled); // Removes any previously killed enemies
     }
 
+    /**
+     * Custom deserialization to initialize transient fields after the object is deserialized
+     * @param ois The ObjectInputStream
+     */
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        ois.defaultReadObject();  // Deserialize the non-transient fields
+        TmxMapLoader maploader = new TmxMapLoader();
+        this.tiledMap = maploader.load(this.tiledMapPath); // Reinitialize the TiledMap
+        this.renderer = new OrthogonalTiledMapRenderer(this.tiledMap); // Reinitialize the renderer
+    }
+
     public void dispose(){
-        this.tiledMap.dispose();
-        this.renderer.dispose();
-        for (Enemy enemy : this.enemies) {
-            enemy.dispose();
-        }
+        if (tiledMap != null) tiledMap.dispose();
+        if (renderer != null) renderer.dispose();
+        if (enemies != null) for (Enemy enemy : enemies) enemy.dispose();
     }
 }

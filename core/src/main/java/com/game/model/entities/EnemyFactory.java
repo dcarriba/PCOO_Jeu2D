@@ -24,7 +24,6 @@ public class EnemyFactory {
     public EnemyFactory(WorldMap worldMap) {
         this.worldMap = worldMap;
         this.enemies = new ArrayList<>();
-//        this.createMultipleEnemies();
         this.createEnemies();
     }
 

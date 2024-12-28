@@ -2,7 +2,9 @@ package com.game.model.directions;
 
 import com.game.model.entities.Player;
 
-public interface Direction {
+import java.io.Serializable;
+
+public abstract class Direction implements Serializable {
 
     /**
      * Retrieves the sprite sheet row corresponding to this direction.
@@ -10,6 +12,6 @@ public interface Direction {
      *
      * @return the row index in the sprite sheet that represents this direction
      */
-    int getSpriteSheetRow();
-    void attack(Player player);
+    public abstract int getSpriteSheetRow();
+    public abstract void attack(Player player);
 }

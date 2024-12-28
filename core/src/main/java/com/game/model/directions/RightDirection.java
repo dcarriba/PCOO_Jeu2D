@@ -10,7 +10,7 @@ import com.game.model.entities.Player;
  * animate the character when moving right.
  * </p>
  */
-public class RightDirection implements Direction {
+public class RightDirection extends Direction {
 
     /**
      * Retrieves the sprite sheet row corresponding to the "right" direction.

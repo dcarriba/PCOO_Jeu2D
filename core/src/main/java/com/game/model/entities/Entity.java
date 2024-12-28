@@ -3,8 +3,10 @@ package com.game.model.entities;
 import com.badlogic.gdx.Gdx;
 import com.game.model.map.WorldMap;
 
+import java.io.Serializable;
+
 /** The abstract <code>Entity</code> class represents an entity */
-public abstract class Entity {
+public abstract class Entity implements Serializable {
     /** Current X position */
     private float positionX;
     /** Current Y position */
@@ -180,6 +182,6 @@ public abstract class Entity {
     }
 
     public void dispose() {
-        spriteSheet.dispose();
+        if (spriteSheet != null) spriteSheet.dispose();
     }
 }

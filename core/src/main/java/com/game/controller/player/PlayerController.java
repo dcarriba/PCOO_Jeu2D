@@ -12,10 +12,6 @@ public class PlayerController {
         this.playerInputHandler = new PlayerInputHandler(player);
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
     public void control(){
         player.update();
         playerInputHandler.handleInput();

@@ -15,9 +15,4 @@ public class Player extends Entity {
     public Player(int tileX, int tileY, SpriteSheet spriteSheet, WorldMap worldMap) {
         super(tileX, tileY, spriteSheet, worldMap);
     }
-
-    @Override
-    public void update() {
-        super.update();
-    }
 }
