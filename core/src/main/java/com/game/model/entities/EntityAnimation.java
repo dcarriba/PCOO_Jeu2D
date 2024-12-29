@@ -72,6 +72,10 @@ public class EntityAnimation implements Serializable {
         walkAnimationState += Gdx.graphics.getDeltaTime();
     }
 
+    /**
+     * Gets the direction the entity is currently facing.
+     * @return The current facing direction of the entity
+     */
     public Direction getCurrentFacingDirection() {
         return currentFacingDirection;
     }

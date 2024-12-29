@@ -1,4 +1,4 @@
-Name : Open RPG Fantasy Tilesets (https://finalbossblues.itch.io/openrtp-tiles)
+Name : Time Fantasy Mini Sprites (https://finalbossblues.itch.io/tf-mini-sprites)
 
 By : finalbossblues
 
@@ -8,4 +8,4 @@ Artist's Website - finalbossblues.com
 Twitter - @finalbossblues
 Patreon - patreon.com/finalbossblues
 
-License : Public domain under a CC0 license.
+License : Open Source

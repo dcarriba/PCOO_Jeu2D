@@ -2,6 +2,7 @@ package com.game.model.entities;
 
 import com.game.model.map.WorldMap;
 
+/** The <code>Enemy</code> class represents an enemy and extends the {@link Entity} class */
 public class Enemy extends Entity {
 
     /**

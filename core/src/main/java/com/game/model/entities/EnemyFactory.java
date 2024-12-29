@@ -11,6 +11,7 @@ import com.game.model.map.layers.enemies.properties.validator.ValidateCustomProp
 import java.util.ArrayList;
 import java.util.List;
 
+/** Factory class for creating enemies in the game world. */
 public class EnemyFactory {
     /** List to store all created enemies */
     private final List<Enemy> enemies;

@@ -8,13 +8,29 @@ import com.game.model.entities.Player;
 import com.game.model.map.WorldMap;
 import com.game.model.settings.Settings;
 
+/**
+ * The <code>PlayScreen</code> class represents the main gameplay screen.
+ * It manages the camera, world map, and player.
+ */
 public class PlayScreen implements Screen {
+    /** The batch used for drawing */
     private final SpriteBatch batch;
+    /** The world map */
     private final WorldMap worldMap;
+    /** The player */
     private final Player player;
+    /** The camera used to view the world */
     private final OrthographicCamera gamecam;
+    /** The viewport of the game screen */
     private final Viewport viewport;
 
+    /**
+     * Constructor to initialize the PlayScreen.
+     * @param batch The sprite batch used for rendering.
+     * @param worldMap The world map used in the game.
+     * @param player The player.
+     * @param settings The screen settings (width and height).
+     */
     public PlayScreen(SpriteBatch batch, WorldMap worldMap, Player player, Settings settings){
         this.batch = batch;
         this.gamecam = new OrthographicCamera();
@@ -24,6 +40,11 @@ public class PlayScreen implements Screen {
         this.worldMap = worldMap;
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
         this.player = player;
+    }
+
+    @Override
+    public void updateViewport(int screenWidth, int screenHeight, boolean centerCamera){
+        viewport.update(screenWidth, screenHeight, centerCamera);
     }
 
     public SpriteBatch getBatch() {
@@ -40,9 +61,5 @@ public class PlayScreen implements Screen {
 
     public OrthographicCamera getGamecam() {
         return gamecam;
-    }
-
-    public Viewport getViewport() {
-        return viewport;
     }
 }

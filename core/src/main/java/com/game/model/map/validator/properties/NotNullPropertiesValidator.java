@@ -4,7 +4,9 @@ import com.badlogic.gdx.maps.MapProperties;
 
 import java.util.Objects;
 
+/** The <code>NotNullPropertiesValidator</code> class ensures that a specified property in the map properties is not null or empty. */
 public class NotNullPropertiesValidator implements PropertiesValidator {
+    /** The next validator in the chain, if any. */
     private PropertiesValidator next;
 
     @Override

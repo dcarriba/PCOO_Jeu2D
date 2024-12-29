@@ -6,7 +6,7 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
-import com.game.model.inputhandler.player.*;
+import com.game.model.inputhandler.player.PlayerInputKey;
 import com.game.model.map.layers.teleport.properties.custom.NextWorldMapNameProperty;
 import com.game.model.map.layers.teleport.properties.custom.NextWorldMapTileXProperty;
 import com.game.model.map.layers.teleport.properties.custom.NextWorldMapTileYProperty;
@@ -14,13 +14,26 @@ import com.game.model.map.layers.teleport.properties.custom.WhenKeyPressedProper
 import com.game.model.map.layers.teleport.properties.validator.ValidateCustomPropertiesTeleport;
 import com.game.model.screens.PlayScreen;
 
+/**
+ * The <code>WorldMapController</code> class is responsible for handling the logic related to teleportation
+ * and updating the worldMap.
+ */
 public class WorldMapController {
+    /** The play screen associated with this world map controller */
     private final PlayScreen playScreen;
 
+    /**
+     * Constructor to initialize the WorldMapController.
+     * @param playScreen The PlayScreen where the world map and player are located.
+     */
     public WorldMapController(PlayScreen playScreen) {
         this.playScreen = playScreen;
     }
 
+    /**
+     * Controls the teleportation logic by checking if the player is standing on a teleport object
+     * and processes the teleportation if all conditions are verified.
+     */
     public void control(){
         // Access the 'teleport' object layer
         MapLayer teleportLayer = playScreen.getWorldMap().getTiledMap().getLayers().get("teleport");  // Object layer for teleporters

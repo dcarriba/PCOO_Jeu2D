@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** The <code>WorldMap</code> class represents a Tiled Map and its attributes (notably its renderer) */
+/** The <code>WorldMap</code> class represents the world map having a tiled map, its renderer, etc. as attributes */
 public class WorldMap implements Serializable {
     /** Width of one tile in the tiledMap */
     private float tileWidth;
@@ -68,10 +68,6 @@ public class WorldMap implements Serializable {
         return renderer;
     }
 
-    /**
-     * Get all enemies
-     * @return List of all enemies
-     */
     public List<Enemy> getEnemies() {
         return enemies;
     }
@@ -89,6 +85,10 @@ public class WorldMap implements Serializable {
             }
         }
         return null;  // Return null if no enemy is found at the given coordinates
+    }
+
+    public Set<String> getKilledEnemies() {
+        return killedEnemies;
     }
 
     /**
@@ -112,10 +112,10 @@ public class WorldMap implements Serializable {
     }
 
     /**
-     * Used to check if a tile isn't blocked (i.e. it is not an obstacle and an entity can walk on it)
+     * Checks if a tile isn't blocked (i.e. it is not an obstacle or enemy)
      * @param tileX the X coordinate of the tile on the TiledMap
      * @param tileY the Y coordinate of the tile on the TiledMap
-     * @return true if the tile isn't blocked (i.e. it is not an obstacle and an entity can walk on it)
+     * @return true if the tile isn't blocked (i.e. it is not an obstacle or enemy)
      */
     public boolean isTileNotBlocked(int tileX, int tileY){
         TiledMapTileLayer layer = (TiledMapTileLayer) tiledMap.getLayers().get("obstacles");
@@ -144,8 +144,7 @@ public class WorldMap implements Serializable {
     }
 
     /**
-     * Updates the WorldMap <br>
-     * Disposes the previous TiledMap and loads the new one.
+     * Updates the WorldMap by disposing the previous TiledMap and loading the new one.
      * @param tiledMapPath the path to the new TiledMap
      * @param tileHeight height of one tile in the new map
      * @param tileWidth width of one tile in the new map

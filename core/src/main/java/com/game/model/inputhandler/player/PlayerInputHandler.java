@@ -8,7 +8,9 @@ import java.util.List;
 
 /** The <code>PlayerInputHandler</code> class is responsible for processing user input related to the <code>Player</code>. */
 public class PlayerInputHandler {
+    /** The Player whose input is being handled */
     private final Player player;
+    /** List of PlayerInputKey objects representing all input keys for the player */
     private final List<PlayerInputKey> inputKeyList;
 
     /** Constructor to initialize the input handler. */
@@ -35,7 +37,7 @@ public class PlayerInputHandler {
 
     /**
      * Creates a list of input keys that the player can use.
-     * @return A <code>List</code> of <code>PlayerInputKey</code> objects.
+     * @return A List of PlayerInputKey objects.
      */
     private List<PlayerInputKey> createInputKeyList() {
         List<PlayerInputKey> inputKeyList = new ArrayList<>();

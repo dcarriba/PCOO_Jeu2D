@@ -12,12 +12,21 @@ import com.game.model.map.validator.properties.PropertiesValidator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The <code>ValidateCustomPropertiesTeleport</code> class validates the custom properties of a teleport object
+ * from the tiledmap's teleport object layer
+ */
 public class ValidateCustomPropertiesTeleport {
+    /** List of custom property names to validate. */
     private final List<String> customPropertyNames = createCustomPropertyNamesList();
 
     public ValidateCustomPropertiesTeleport() {
     }
 
+    /**
+     * Creates the list of the custom property names of a teleport object from the tiledmap's teleport object layer .
+     * @return a list of custom property names.
+     */
     private List<String> createCustomPropertyNamesList(){
         List<String> customProperties = new ArrayList<>();
         customProperties.add(new NextWorldMapNameProperty().getName());
@@ -28,12 +37,10 @@ public class ValidateCustomPropertiesTeleport {
     }
 
     /**
-     * Checks if a property exist and has a defined value amongst the properties of the object from
-     * the teleport object layer.
+     * Validates whether a specific property exists and has a defined value
      * @param properties the properties of the object from the teleport object layer
-     * @param propertyName the name of the property
-     * @return  if property given as an argument (propertyName) is present and has a defined value
-     *          amongst the properties of the object from the teleport object layer.
+     * @param propertyName the name of the property to validate.
+     * @return  true if the property exists and has a defined value, false otherwise
      */
     private boolean validateProperty(MapProperties properties, String propertyName){
         PropertiesValidator presence = new PresencePropertiesValidator();
@@ -43,10 +50,10 @@ public class ValidateCustomPropertiesTeleport {
     }
 
     /**
-     * Checks if all properties in the customPropertyNames List exist and have a defined value amongst the properties of
-     * the object from the teleport object layer.
+     * Validates all custom teleport properties in the list.
+     * Checks that each property exists and has a defined value.
      * @param properties the properties of the object from the teleport object layer
-     * @return if all properties in the customPropertyNames List are present and have a defined value.
+     * @return true if all properties are present and valid, false otherwise.
      */
     public boolean validate(MapProperties properties){
         boolean result = true;

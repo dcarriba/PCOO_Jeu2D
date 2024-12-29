@@ -72,8 +72,6 @@ public class SpriteSheet implements Serializable {
     }
 
     public void dispose() {
-        if (texture != null) {
-            texture.dispose(); // Disposes the texture when no longer needed
-        }
+        if (texture != null) texture.dispose(); // Disposes the texture when no longer needed
     }
 }

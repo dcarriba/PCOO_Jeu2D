@@ -3,22 +3,31 @@ package com.game.view.screens;
 import com.game.model.entities.Enemy;
 import com.game.model.screens.PlayScreen;
 
-public class PlayScreenView {
+/**
+ * The <code>PlayScreenView</code> class is responsible for rendering the playScreen,
+ * including the worldMap, player, and enemies.
+ */
+public class PlayScreenView implements ScreenView {
+    /** The PlayScreen instance to be rendered. */
     private final PlayScreen playScreen;
 
+    /**
+     * Constructor to initialize the PlayScreenView with the given PlayScreen.
+     * @param playScreen The PlayScreen instance to be rendered.
+     */
     public PlayScreenView(PlayScreen playScreen){
         this.playScreen = playScreen;
     }
 
+    /** Updates the camera position to follow the player. */
     public void update(){
-        // Update the camera's view to follow the player
         playScreen.getGamecam().position.x = playScreen.getPlayer().getPositionX() + 8;
         playScreen.getGamecam().position.y = playScreen.getPlayer().getPositionY() + 8;
-
-        // Make sure camera is updated after position change
-        playScreen.getGamecam().update();
+        playScreen.getGamecam().update(); // Make sure camera is updated after position change
     }
 
+    /** Renders the map, player, and enemies on the screen. */
+    @Override
     public void render(){
         update(); // updates the camera
 
@@ -52,6 +61,5 @@ public class PlayScreenView {
         }
         // End the sprite batch
         playScreen.getBatch().end();
-
     }
 }

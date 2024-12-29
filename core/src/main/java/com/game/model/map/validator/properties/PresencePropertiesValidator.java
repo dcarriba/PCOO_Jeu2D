@@ -2,7 +2,9 @@ package com.game.model.map.validator.properties;
 
 import com.badlogic.gdx.maps.MapProperties;
 
+/** The <code>PresencePropertiesValidator</code> class validates if a specified property exists in the given map properties. */
 public class PresencePropertiesValidator implements PropertiesValidator {
+    /** The next validator in the chain, if any. */
     private PropertiesValidator next;
 
     @Override

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.controller.menu.MenuScreenController;
 import com.game.controller.player.PlayerController;
 import com.game.controller.map.WorldMapController;
+import com.game.model.activescreen.ActiveScreen;
 import com.game.model.entities.Player;
 import com.game.model.entities.SpriteSheet;
 import com.game.model.map.WorldMap;
@@ -14,31 +15,48 @@ import com.game.model.memento.GameMemento;
 import com.game.model.scenes.Hud;
 import com.game.model.screens.MenuScreen;
 import com.game.model.screens.PlayScreen;
-import com.game.model.screens.Screen;
 import com.game.view.scenes.HudView;
 import com.game.view.screens.MenuScreenView;
 import com.game.view.screens.PlayScreenView;
 import com.game.model.settings.Settings;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-/** The <code>Mygame</code> is the main game class. It implements {@link com.badlogic.gdx.ApplicationListener} */
+/** The <code>Mygame</code> is the main game class. It implements {@link com.badlogic.gdx.ApplicationListener}. */
 public class Mygame implements ApplicationListener {
-    // models
+    // MODELS
+    /** SpriteBatch where the player and the enemies are drawn on */
     private SpriteBatch batch;
+    /** Basic game settings */
     private final Settings settings;
+    /** The worldMap with the current tiledMap */
     private WorldMap worldMap;
+    /** The playScreen containing all entities as well as the worldMap */
     private PlayScreen playScreen;
+    /** The player */
     private Player player;
+    /** The hud displayed on top of the playScreen */
     private Hud hud;
+    /** The main menu shown when the game is launched */
     private MenuScreen menuScreen;
-    private Screen activeScreen;
-    // views
+    /** Stores the current active screen and its view */
+    private ActiveScreen activeScreen;
+    // VIEWS
+    /** The view for the playScreen */
     private PlayScreenView playScreenView;
+    /** The view for the hud */
     private HudView hudView;
+    /** the view for the menuScreen */
     private MenuScreenView menuScreenView;
-    // controllers
+    // CONTROLLERS
+    /** handles all input relative to the player */
     private PlayerController playerController;
+    /** handles which tiledMap the player is currently on, and changes it when needed */
     private WorldMapController worldMapController;
 
     /** Constructor to create the Game */
@@ -56,18 +74,19 @@ public class Mygame implements ApplicationListener {
         this.batch = new SpriteBatch();
         this.menuScreen = new MenuScreen(this);
         this.menuScreenView = new MenuScreenView(this.menuScreen);
-        this.activeScreen = this.menuScreen;
+        this.activeScreen = new ActiveScreen(this.menuScreen, this.menuScreenView);
         MenuScreenController menuScreenController = new MenuScreenController(this.menuScreen);
         menuScreenController.createMenuScreenButtonsListeners();
     }
 
+    /** Starts a new game */
     public void startNewGame() {
         this.batch = new SpriteBatch();
         this.worldMap = new WorldMap("worlds/city.tmx", 16, 16);
         SpriteSheet spriteSheet = new SpriteSheet("tilesets/characterstiles/char1_1.png", 16, 16, 0, 0);
         this.player = new Player(45, 46, spriteSheet, this.worldMap);
         this.playScreen = new PlayScreen(this.batch, this.worldMap, this.player, this.settings);
-        this.hud = new Hud(this.batch, this.settings);
+        this.hud = new Hud(this.playScreen, this.settings);
         this.playerController = new PlayerController(this.player);
         this.worldMapController = new WorldMapController(this.playScreen);
         this.playScreenView = new PlayScreenView(this.playScreen);
@@ -75,6 +94,7 @@ public class Mygame implements ApplicationListener {
         setPlayScreen();
     }
 
+    /** Loads the last game save. If there is none, it will start a new game */
     public void loadGame() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("game_save.ser"))) {
             GameMemento memento = (GameMemento) ois.readObject();
@@ -82,7 +102,7 @@ public class Mygame implements ApplicationListener {
             this.player = memento.getPlayer();
             this.worldMap = memento.getWorldMap();
             this.playScreen = new PlayScreen(this.batch, this.worldMap, this.player, this.settings);
-            this.hud = new Hud(this.batch, this.settings);
+            this.hud = new Hud(this.playScreen, this.settings);
             this.playerController = new PlayerController(this.player);
             this.worldMapController = new WorldMapController(this.playScreen);
             this.playScreenView = new PlayScreenView(this.playScreen);
@@ -94,11 +114,13 @@ public class Mygame implements ApplicationListener {
         }
     }
 
+    /** Checks if a save file of the game exists or not */
     public boolean isSaveAvailable() {
         File saveFile = new File("game_save.ser");
         return saveFile.exists();
     }
 
+    /** Saves the current game in the game_save.ser file */
     private void saveGame() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("game_save.ser"))) {
             GameMemento memento = createMemento();
@@ -108,16 +130,19 @@ public class Mygame implements ApplicationListener {
         }
     }
 
+    /** Creates a Memento (needed to save the game) */
     private GameMemento createMemento() {
         return new GameMemento(player, worldMap);
     }
 
+    /** Transitions from the initial menu screen to the playScreen */
     private void setPlayScreen() {
         removeMenuScreen();
-        activeScreen = playScreen;
-        playScreen.getViewport().update(settings.getWidth(), settings.getHeight(), false);
+        activeScreen = new ActiveScreen(playScreen, playScreenView);
+        playScreen.updateViewport(settings.getWidth(), settings.getHeight(), false);
     }
 
+    /** Removes the initial menu screen by disposing it and by removing all its references  */
     private void removeMenuScreen(){
         menuScreen.dispose();
         menuScreen = null;
@@ -125,37 +150,38 @@ public class Mygame implements ApplicationListener {
         activeScreen = null;
     }
 
-    public void update(){
-        playerController.control();
-        worldMapController.control();
+    /** Checks if the current active screen is the playScreen */
+    private boolean isPlayScreenActive(){
+        return playScreen != null && activeScreen.getScreen() == playScreen;
     }
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if (activeScreen == menuScreen) menuScreenView.render();
-        if (activeScreen == playScreen) {
-            playScreenView.render();
+        activeScreen.getScreenView().render();
+        if (isPlayScreenActive()) {
+            // the hud is only rendered on top of the playScreen
             hudView.render();
-            this.update();
+            // the player and worldMap are only controlled when the playScreen is active
+            playerController.control();
+            worldMapController.control();
         }
     }
 
     @Override
     public void resize(int width, int height) {
-        if (activeScreen == menuScreen) menuScreen.getStage().getViewport().update(width, height, false);
-        if (activeScreen == playScreen) playScreen.getViewport().update(width, height, false);
+        activeScreen.getScreen().updateViewport(width, height, false);
     }
 
     @Override
     public void pause() {
-        if (activeScreen == playScreen) saveGame();
+        if (isPlayScreenActive()) saveGame();
     }
 
     @Override
     public void resume() {
-        if (isSaveAvailable() && activeScreen == playScreen) loadGame();
+        if (isSaveAvailable() && isPlayScreenActive()) loadGame();
     }
 
     @Override

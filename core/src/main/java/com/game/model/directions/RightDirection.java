@@ -2,23 +2,11 @@ package com.game.model.directions;
 
 import com.game.model.entities.Player;
 
-/**
- * Represents the "right" direction in the game.
- * <p>
- * This class implements the {@link Direction} interface and provides the specific
- * sprite sheet row index for the "right" direction. This index is used to correctly
- * animate the character when moving right.
- * </p>
- */
+/** Represents the "right" direction in the game. */
 public class RightDirection extends Direction {
 
     /**
      * Retrieves the sprite sheet row corresponding to the "right" direction.
-     * <p>
-     * In this case, the row index for the "right" direction is 2, which corresponds
-     * to the frames for moving right in the sprite sheet.
-     * </p>
-     *
      * @return the row index (2) for the "right" direction in the sprite sheet
      */
     @Override
@@ -26,6 +14,11 @@ public class RightDirection extends Direction {
         return 2;
     }
 
+    /**
+     * Executes the attack action for the player in the "right" direction.
+     * If there is an enemy to the right of the player, it will be killed.
+     * @param player the player performing the attack
+     */
     @Override
     public void attack(Player player) {
         if (player.getWorldMap().isTileBlockedByEnemy(player.getTileX() + 1, player.getTileY())) {
