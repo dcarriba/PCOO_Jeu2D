@@ -9,10 +9,10 @@ public class PlayerInputKeyRight extends PlayerInputKey {
 
     /**
      * Constructor to initialize the right movement input key.
-     * The right movement action is bound to the "D" key.
+     * The right movement action is bound to the right arrow key.
      */
     public PlayerInputKeyRight(){
-        super(Input.Keys.D);
+        super(Input.Keys.RIGHT);
     }
 
     /**

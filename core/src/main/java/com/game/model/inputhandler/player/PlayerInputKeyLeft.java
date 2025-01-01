@@ -9,10 +9,10 @@ public class PlayerInputKeyLeft extends PlayerInputKey {
 
     /**
      * Constructor to initialize the left movement input key.
-     * The left movement action is bound to the "A" key.
+     * The left movement action is bound to the left arrow key.
      */
     public PlayerInputKeyLeft(){
-        super(Input.Keys.A);
+        super(Input.Keys.LEFT);
     }
 
     /**

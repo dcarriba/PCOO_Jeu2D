@@ -9,10 +9,10 @@ public class PlayerInputKeyDown extends PlayerInputKey {
 
     /**
      * Constructor to initialize the down movement input key.
-     * The down movement action is bound to the "S" key.
+     * The down movement action is bound to the down arrow key.
      */
     public PlayerInputKeyDown(){
-        super(Input.Keys.S);
+        super(Input.Keys.DOWN);
     }
 
     /**

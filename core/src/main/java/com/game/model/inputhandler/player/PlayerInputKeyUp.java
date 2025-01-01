@@ -9,10 +9,10 @@ public class PlayerInputKeyUp extends PlayerInputKey {
 
     /**
      * Constructor to initialize the up movement input key.
-     * The up movement action is bound to the "W" key.
+     * The up movement action is bound to the up arrow key.
      */
     public PlayerInputKeyUp(){
-        super(Input.Keys.W);
+        super(Input.Keys.UP);
     }
 
     /**
