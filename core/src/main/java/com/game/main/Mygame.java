@@ -139,7 +139,7 @@ public class Mygame implements ApplicationListener {
     private void setPlayScreen() {
         removeMenuScreen();
         activeScreen = new ActiveScreen(playScreen, playScreenView);
-        playScreen.updateViewport(settings.getWidth(), settings.getHeight(), false);
+        playScreen.updateViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
     }
 
     /** Removes the initial menu screen by disposing it and by removing all its references  */
