@@ -2,10 +2,11 @@ package com.game.model.screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.model.entities.Player;
 import com.game.model.map.WorldMap;
+import com.game.model.scenes.Hud;
 import com.game.model.settings.Settings;
 
 /**
@@ -23,6 +24,8 @@ public class PlayScreen implements Screen {
     private final OrthographicCamera gamecam;
     /** The viewport of the game screen */
     private final Viewport viewport;
+    /** The hud displayed on top of the playScreen */
+    private final Hud hud;
 
     /**
      * Constructor to initialize the PlayScreen.
@@ -36,15 +39,17 @@ public class PlayScreen implements Screen {
         this.gamecam = new OrthographicCamera();
         int viewportWidth = settings.getWidth()/4;
         int viewportHeight = settings.getHeight()/4;
-        this.viewport = new FitViewport(viewportWidth, viewportHeight, this.gamecam);
+        this.viewport = new ExtendViewport(viewportWidth, viewportHeight, this.gamecam);
         this.worldMap = worldMap;
         this.gamecam.position.set(viewportWidth /2f, viewportHeight /2f, 0);
         this.player = player;
+        this.hud = new Hud(this);
     }
 
     @Override
-    public void updateViewport(int screenWidth, int screenHeight, boolean centerCamera){
-        viewport.update(screenWidth, screenHeight, centerCamera);
+    public void resize(int screenWidth, int screenHeight){
+        viewport.update(screenWidth, screenHeight);
+        hud.resize();
     }
 
     public SpriteBatch getBatch() {
@@ -59,7 +64,15 @@ public class PlayScreen implements Screen {
         return player;
     }
 
+    public Hud getHud() {
+        return hud;
+    }
+
     public OrthographicCamera getGamecam() {
         return gamecam;
+    }
+
+    public void dispose(){
+        if (hud != null) hud.dispose();
     }
 }

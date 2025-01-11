@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="3">
  <tileset firstgid="1" source="../tilesets/worldtiles/interior.tsx"/>
  <tileset firstgid="481" source="../tilesets/worldtiles/exterior.tsx"/>
- <layer id="1" name="ground" width="30" height="30">
+ <layer id="1" name="ground" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjILhB3KBOA+KQxgZGMIYEfx8GtrbDcQ9OHDvqL2j9o7aO6jtXQnEq6BYAlhmSDEi+KtpaO8oGAWjYBQMJAAA3GQqcQ==
+   eJzt1bEJgDAUBNBkC3EucQt1EHUQdUlTCFYWKSQhvAdX/O6u+iEAAAAALZpS5idDDGGM770UbZZnTdk+shfslcuOuthRFzvq0sqOI+V80qUf2Mf3voo2AwAAAP50AzryKnE=
   </data>
  </layer>
- <layer id="2" name="obstacles" width="30" height="30">
+ <layer id="2" name="obstacles" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzTYmZg0BrFo3gUj2IScCnDwGBS3LeDkYFhNhCjg5lAsWuMpJlHir0gsB2LvTCx4Wbvazz2vqahvZyMuO3lpGH8quOxV300XQ1Ke0kpY0Dlxk4s9l5FKjeoXV6N4lE8ikcxDA9U+woAERi/5Q==
+   eJzt10EOQDAQheFprJxE0vs5jDgIDsIlegmVkIhgUzGm/ibfpgv6mkwevhDxAAD8VC150L5HAAA0affwV/t8eWbvRNrouJq4Nzkb3xH1eubuJMe2R453c4SbHMFQjtJd5ygNzUd1k6MylCOX+SBH2nuftvTgcJJj3PXg1/scAABLtP+r6XMAANJp9/BTZs0fBkM=
   </data>
  </layer>
- <layer id="3" name="obstacles2" width="30" height="30">
+ <layer id="3" name="obstacles2" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztyaENAAAIA7D9L7kYPYsjaW0TAPhljgcAtAVaYAEl
+   eJztybENAAAIA6D+P3qxP3QyEVYSAAAAAPhlygMAAAAAblvj0gEl
   </data>
  </layer>
  <objectgroup id="4" name="teleport">
-  <object id="1" x="224" y="304" width="32" height="16">
+  <object id="1" x="384" y="464" width="32" height="16">
    <properties>
     <property name="nextWorldMapName" value="city.tmx"/>
     <property name="nextWorldMapTileX" type="int" value="45"/>
@@ -26,11 +26,11 @@
     <property name="whenKeyPressed" value="PlayerInputKeyDown"/>
    </properties>
   </object>
-  <object id="2" x="224" y="160" width="32" height="16">
+  <object id="2" x="384" y="320" width="32" height="16">
    <properties>
     <property name="nextWorldMapName" value="forest.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="25"/>
-    <property name="nextWorldMapTileY" type="int" value="18"/>
+    <property name="nextWorldMapTileX" type="int" value="35"/>
+    <property name="nextWorldMapTileY" type="int" value="28"/>
     <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
    </properties>
   </object>

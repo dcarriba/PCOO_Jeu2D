@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="11">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="70" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="11">
  <tileset firstgid="1" source="../tilesets/worldtiles/exterior.tsx"/>
  <tileset firstgid="481" source="../tilesets/worldtiles/interior.tsx"/>
- <layer id="1" name="ground" width="50" height="80">
+ <layer id="1" name="ground" width="70" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2ssNwjAQRVGbCiiTXqiEbxuBFtgDbRAWWTiJLBE/x2NzrzTbSEfKwhrN1ju3XTDWWmLAkS8ctsJhKxy2+nfH0eWf0wqOm8s/9xUcL5d/3is4FJ37ufRzFXwLR3o4puFID8c0HOnhmKZ0HJzmfVja0TnN+7C04+k078PSjm/Kf/6XcMyHIy0c8ykcS76BAwcOHDjsO/a+jT31Y9PGnrrz7KnHqd5jODThCMOhCUcYDk01OWJ735ocsb1vrY6db8MxfivX5Ijt4WtyxMIRhkMTjjAcmnCE4dCEIyzVobopKXWHPKS6KSl1hzykuimpfb+rCoetcNgKh61w2KoVxwfmsLVQ
+   eJzt200KwjAQQOHUE/SY3sWT+HsN9Qru1WtYEKHoo1jIGNO+B7Pt4lsEwjRtk1IbOLUWaaKLLrroostnunC6cLpwunC6cLpwunC6cLpwunC6cLpwunC6cNEumxQ/2wpdTil+zhW63FL83Ct0ydGum303hzyf+ypdOF04XThdOF04XThdOF04XbgSLuuU574YWQmXY8pzX4yshMs15bkvRlbqfClxZoxJF04XThdOF65ml0hbXThdOF04XThdOF04XbhIk1Xj3p7msnBvT3Ns3NuPPV/G9uv7lC6cLpwunC6cLpwunC6cLtw/uQztrefsMrS31uU5y0aXV32X97v4nF2G/nOYs8tQunC6cLpwunC6cLpwunC6cLpwunBTdcn1JmAK++m+S643AVPYT/ddcr0JcD9dNl04XThdOF04XThdOF04XThdOF04XThdOF04XThdOF04XThdOF24BxvXCl8=
   </data>
  </layer>
- <layer id="2" name="obstacles" width="50" height="80">
+ <layer id="2" name="obstacles" width="70" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2UsKwjAUBdBkVCfiZw86ET/L0HU4cOIGRHHmGvxsRLs7XzGi1FKbNu274n1wSQel5HJqKBhZY1qSyHM9GawMZE9D679q7zsdXwd60IMe9KAHPXw8VhKNCe1xcD32DfcJ7aE1oT2Smcu6sH7Pz0uZ/Vb1qOO8CtlD87yiBz3oQQ960CO9ryqj7aHZgx71v/NaHpo96IHVgx719SjzDESPMs+gB1YPemD1+DePpWQj2bl820Occ4+mR1fu7Un6ptkJ7TGRe6eSGWiPoh4X9z7dLGYP7f+jyuy5ifNKqwc9sHrQA6sHPbB60KN4tvbxLXB8S9a3AbrHWe5vy9qRrM3rOj3oHkmPkaxjt9/ndfyDHkUG3eOa8VsI3YPnFVYPemD1oAdWD3pg9aAHVg96fO6jjmnKA6UHPbCifV6FCj2wQg+s0AMr9MDKHdOdAqo=
+   eJzt2UtKA0EUheGqUZyIjz3oRHwsI67DQSZuICjOXIOPjWh2lxtsMUiIQfrWPTf1XzhUD5omdfjS3SSTWsqBZeK0vpacObPPfl791uj9/TdeTvCCF7zgBS94wQte8IIXheAFL3jBC17wohC84CXSy8wSMepenodenhr3o+4latS9rGZq620d7/N67r+VF4/nUUQvGZ5HeNHpBS94wQte8IIXhV4ivIw1++YlQy940fESdc9Q95KhF7zgBS99e/HsNrMXz17wghe84AUvub3cWeaWxyF/7Wmx5Zx98nJs1zyxnJa2o+7lyq55bblpWcpIXXh6eR++P581dy8Zft/1vpe08OLxf0BEL3jBC17wghe8KPSCF30vD/XrXfllLZvenXvz8mbnH9p6ZLkvP8e/pzcvq14ubL0c9v99vMDLTtObl48N95KoXpS8bEvPXpR6wQte8IIXvOBFoRe84AUvebx4T1Yv2XrBS+77S+tkeR61Dl7wghe84AUvCsELXvCCF7zgRSF4wQte8IIXvChkCVrbdaY=
   </data>
  </layer>
- <layer id="3" name="obstacles2" width="50" height="80">
+ <layer id="3" name="obstacles2" width="70" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1rkVwCAMREHRq3EfPgoncaSUwIg3U8HfbCMAAAAAAAAAqOBofxfMub7+u/gOAIBd9PTLzqI/7Undb9EdAAAAAACrGJmUA0E=
+   eJzt1zEOQBEAREHuint8HFwiKq3EV8ycYPO6DQEAAAAAAAAAAAAAAADgrhT/XvCWb/WougAAABzJ268qftbUtg5dFwAAAAAAAAAAAOBxA2TOA0E=
   </data>
  </layer>
  <objectgroup id="4" name="teleport">
-  <object id="1" x="208" y="640" width="16" height="16">
+  <object id="1" x="368" y="800" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="passage_horizontal_east.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="19"/>
-    <property name="nextWorldMapTileY" type="int" value="14"/>
+    <property name="nextWorldMapTileX" type="int" value="29"/>
+    <property name="nextWorldMapTileY" type="int" value="24"/>
     <property name="whenKeyPressed" value="PlayerInputKeyLeft"/>
    </properties>
   </object>
-  <object id="2" x="448" y="848" width="16" height="16">
+  <object id="2" x="608" y="1008" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="house_tiny.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="14"/>
-    <property name="nextWorldMapTileY" type="int" value="17"/>
+    <property name="nextWorldMapTileX" type="int" value="24"/>
+    <property name="nextWorldMapTileY" type="int" value="27"/>
     <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="5" name="enemies">
-  <object id="3" x="256" y="624" width="16" height="16">
+  <object id="3" x="416" y="784" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="4" x="480" y="624" width="16" height="16">
+  <object id="4" x="640" y="784" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="5" x="544" y="848" width="16" height="16">
+  <object id="5" x="704" y="1008" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="6" x="576" y="624" width="16" height="16">
+  <object id="6" x="736" y="784" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="7" x="400" y="368" width="16" height="16">
+  <object id="7" x="560" y="528" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="8" x="528" y="240" width="16" height="16">
+  <object id="8" x="688" y="400" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="9" x="480" y="160" width="16" height="16">
+  <object id="9" x="640" y="320" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>
   </object>
-  <object id="10" x="496" y="1072" width="16" height="16">
+  <object id="10" x="656" y="1232" width="16" height="16">
    <properties>
     <property name="spriteSheetImageName" value="orcs_1.png"/>
    </properties>

@@ -21,40 +21,40 @@
   <object id="37" x="1248" y="736" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="passage_horizontal_east.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="10"/>
-    <property name="nextWorldMapTileY" type="int" value="14"/>
+    <property name="nextWorldMapTileX" type="int" value="20"/>
+    <property name="nextWorldMapTileY" type="int" value="24"/>
     <property name="whenKeyPressed" value="PlayerInputKeyRight"/>
    </properties>
   </object>
   <object id="45" x="848" y="832" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="house_medium.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="19"/>
-    <property name="nextWorldMapTileY" type="int" value="17"/>
+    <property name="nextWorldMapTileX" type="int" value="29"/>
+    <property name="nextWorldMapTileY" type="int" value="27"/>
     <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
    </properties>
   </object>
   <object id="46" x="720" y="1248" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="passage_vertical_south.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="14"/>
-    <property name="nextWorldMapTileY" type="int" value="10"/>
+    <property name="nextWorldMapTileX" type="int" value="24"/>
+    <property name="nextWorldMapTileY" type="int" value="20"/>
     <property name="whenKeyPressed" value="PlayerInputKeyDown"/>
    </properties>
   </object>
   <object id="47" x="336" y="736" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="passage_horizontal_west.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="19"/>
-    <property name="nextWorldMapTileY" type="int" value="14"/>
+    <property name="nextWorldMapTileX" type="int" value="29"/>
+    <property name="nextWorldMapTileY" type="int" value="24"/>
     <property name="whenKeyPressed" value="PlayerInputKeyLeft"/>
    </properties>
   </object>
   <object id="48" x="720" y="320" width="16" height="16">
    <properties>
     <property name="nextWorldMapName" value="passage_vertical_north.tmx"/>
-    <property name="nextWorldMapTileX" type="int" value="14"/>
-    <property name="nextWorldMapTileY" type="int" value="19"/>
+    <property name="nextWorldMapTileX" type="int" value="24"/>
+    <property name="nextWorldMapTileY" type="int" value="29"/>
     <property name="whenKeyPressed" value="PlayerInputKeyUp"/>
    </properties>
   </object>

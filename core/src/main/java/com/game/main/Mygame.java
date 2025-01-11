@@ -12,10 +12,8 @@ import com.game.model.entities.Player;
 import com.game.model.entities.SpriteSheet;
 import com.game.model.map.WorldMap;
 import com.game.model.memento.GameMemento;
-import com.game.model.scenes.Hud;
 import com.game.model.screens.MenuScreen;
 import com.game.model.screens.PlayScreen;
-import com.game.view.scenes.HudView;
 import com.game.view.screens.MenuScreenView;
 import com.game.view.screens.PlayScreenView;
 import com.game.model.settings.Settings;
@@ -40,8 +38,6 @@ public class Mygame implements ApplicationListener {
     private PlayScreen playScreen;
     /** The player */
     private Player player;
-    /** The hud displayed on top of the playScreen */
-    private Hud hud;
     /** The main menu shown when the game is launched */
     private MenuScreen menuScreen;
     /** Stores the current active screen and its view */
@@ -49,8 +45,6 @@ public class Mygame implements ApplicationListener {
     // VIEWS
     /** The view for the playScreen */
     private PlayScreenView playScreenView;
-    /** The view for the hud */
-    private HudView hudView;
     /** the view for the menuScreen */
     private MenuScreenView menuScreenView;
     // CONTROLLERS
@@ -86,11 +80,9 @@ public class Mygame implements ApplicationListener {
         SpriteSheet spriteSheet = new SpriteSheet("tilesets/characterstiles/char1_1.png", 16, 16, 0, 0);
         this.player = new Player(45, 46, spriteSheet, this.worldMap);
         this.playScreen = new PlayScreen(this.batch, this.worldMap, this.player, this.settings);
-        this.hud = new Hud(this.playScreen, this.settings);
         this.playerController = new PlayerController(this.player);
         this.worldMapController = new WorldMapController(this.playScreen);
         this.playScreenView = new PlayScreenView(this.playScreen);
-        this.hudView = new HudView(this.playScreen, this.hud);
         setPlayScreen();
     }
 
@@ -102,11 +94,9 @@ public class Mygame implements ApplicationListener {
             this.player = memento.getPlayer();
             this.worldMap = memento.getWorldMap();
             this.playScreen = new PlayScreen(this.batch, this.worldMap, this.player, this.settings);
-            this.hud = new Hud(this.playScreen, this.settings);
             this.playerController = new PlayerController(this.player);
             this.worldMapController = new WorldMapController(this.playScreen);
             this.playScreenView = new PlayScreenView(this.playScreen);
-            this.hudView = new HudView(this.playScreen, this.hud);
             setPlayScreen();
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error during game loading: " + e.getMessage());
@@ -139,7 +129,7 @@ public class Mygame implements ApplicationListener {
     private void setPlayScreen() {
         removeMenuScreen();
         activeScreen = new ActiveScreen(playScreen, playScreenView);
-        playScreen.updateViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+        playScreen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     /** Removes the initial menu screen by disposing it and by removing all its references  */
@@ -161,8 +151,6 @@ public class Mygame implements ApplicationListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         activeScreen.getScreenView().render();
         if (isPlayScreenActive()) {
-            // the hud is only rendered on top of the playScreen
-            hudView.render();
             // the player and worldMap are only controlled when the playScreen is active
             playerController.control();
             worldMapController.control();
@@ -171,7 +159,7 @@ public class Mygame implements ApplicationListener {
 
     @Override
     public void resize(int width, int height) {
-        activeScreen.getScreen().updateViewport(width, height, false);
+        activeScreen.getScreen().resize(width, height);
     }
 
     @Override
@@ -187,9 +175,9 @@ public class Mygame implements ApplicationListener {
     @Override
     public void dispose() {
         if (menuScreen != null) menuScreen.dispose();
+        if (playScreen != null) playScreen.dispose();
         if (batch != null) batch.dispose();
         if (player != null) player.dispose();
         if (worldMap != null) worldMap.dispose();
-        if (hud != null) hud.dispose();
     }
 }

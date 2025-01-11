@@ -1,5 +1,6 @@
 package com.game.model.scenes;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -9,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.model.screens.PlayScreen;
-import com.game.model.settings.Settings;
 
 /**
  * The <code>Hud</code> class represents the HUD.
@@ -17,43 +17,50 @@ import com.game.model.settings.Settings;
  */
 public class Hud {
     /** The Stage to manage the HUD UI elements */
-    private final Stage stage;
+    private Stage stage;
     /** The PlayScreen to access the game data */
     private final PlayScreen playScreen;
     /** The label that displays the number of enemies killed */
-    private final Label nbEnemiesKilledLabel;
+    private Label nbEnemiesKilledLabel;
 
     /**
      * Constructor to initialize the HUD.
      * @param playScreen The current PlayScreen of the game.
-     * @param settings The game Settings containing screen size information.
      */
-    public Hud(PlayScreen playScreen, Settings settings){
+    public Hud(PlayScreen playScreen){
         this.playScreen = playScreen;
-        Viewport viewport = new FitViewport(settings.getWidth(), settings.getHeight(), new OrthographicCamera());
+        createStage();
+    }
+
+    private void createStage(){
+        Viewport viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), new OrthographicCamera());
         this.stage = new Stage(viewport, this.playScreen.getBatch());
 
         Table table = new Table();
         table.top();
         table.setFillParent(true);
 
-        // Create labels for "Enemies Killed" and the current number of killed enemies.
-        Label userLabel = new Label("Enemies Killed :", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        BitmapFont bitmapFont = new BitmapFont();
+        bitmapFont.getData().setScale(1.5f);
         int nbEnemiesKilled = this.playScreen.getWorldMap().getKilledEnemies().size();
-        this.nbEnemiesKilledLabel = new Label(Integer.toString(nbEnemiesKilled), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        // Create label for the current number of killed enemies.
+        this.nbEnemiesKilledLabel = new Label("Enemies Killed :" + nbEnemiesKilled, new Label.LabelStyle(bitmapFont, Color.WHITE));
 
-        // Add the labels to the table
-        table.add(userLabel).expandX().padTop(10);
-        table.row();
-        table.add(this.nbEnemiesKilledLabel).expandX().padTop(10);
+        // Add the label to the table
+        table.add(this.nbEnemiesKilledLabel).padTop(10);
 
         this.stage.addActor(table); // adds the table to the stage
     }
 
-    /** Updates the HUD by refreshing the number of enemies killed. */
+    /** Updates the HUD by refreshing the number of killed enemies. */
     public void update(){
         int nbEnemiesKilled = playScreen.getWorldMap().getKilledEnemies().size();
-        nbEnemiesKilledLabel.setText(Integer.toString(nbEnemiesKilled));
+        nbEnemiesKilledLabel.setText("Enemies Killed : " + nbEnemiesKilled);
+    }
+
+    /** Called when resizing the screen, recreates the stage managing the UI elements */
+    public void resize(){
+        createStage();
     }
 
     public Stage getStage() {

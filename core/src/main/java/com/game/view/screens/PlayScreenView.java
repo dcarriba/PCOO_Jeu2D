@@ -2,6 +2,7 @@ package com.game.view.screens;
 
 import com.game.model.entities.Enemy;
 import com.game.model.screens.PlayScreen;
+import com.game.view.scenes.HudView;
 
 /**
  * The <code>PlayScreenView</code> class is responsible for rendering the playScreen,
@@ -20,20 +21,20 @@ public class PlayScreenView implements ScreenView {
     }
 
     /** Updates the camera position to follow the player. */
-    public void update(){
-        playScreen.getGamecam().position.x = playScreen.getPlayer().getPositionX() + 8;
-        playScreen.getGamecam().position.y = playScreen.getPlayer().getPositionY() + 8;
-        playScreen.getGamecam().update(); // Make sure camera is updated after position change
+    public void updateCamera(){
+        playScreen.getGamecam().position.x = playScreen.getPlayer().getPositionX() + playScreen.getWorldMap().getTileHeight()/2;
+        playScreen.getGamecam().position.y = playScreen.getPlayer().getPositionY() + playScreen.getWorldMap().getTileHeight()/2;
+        playScreen.getGamecam().update();
     }
 
     /** Renders the map, player, and enemies on the screen. */
     @Override
     public void render(){
-        update(); // updates the camera
+        updateCamera();
 
         // Render the map
         playScreen.getWorldMap().getRenderer().setView(playScreen.getGamecam()); // Set the view for the map renderer based on camera
-        playScreen.getWorldMap().getRenderer().render(); // Render the map
+        playScreen.getWorldMap().getRenderer().render();
 
         // Set the projection matrix for the player (same camera as the map)
         playScreen.getBatch().setProjectionMatrix(playScreen.getGamecam().combined);
@@ -61,5 +62,8 @@ public class PlayScreenView implements ScreenView {
         }
         // End the sprite batch
         playScreen.getBatch().end();
+
+        // Render the Hud
+        new HudView(playScreen.getHud()).render();
     }
 }

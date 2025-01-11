@@ -2,6 +2,7 @@ package com.game.model.screens;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -36,7 +37,7 @@ public class MenuScreen implements Screen {
      */
     public MenuScreen(Mygame game) {
         this.game = game;
-        this.viewport = new FitViewport((float) this.game.getSettings().getWidth() / 2, (float) this.game.getSettings().getWidth() / 2);
+        this.viewport = new FitViewport(this.game.getSettings().getWidth() / 2f, this.game.getSettings().getWidth() / 2f);
         this.stage = new Stage(this.viewport);
         createUI();
     }
@@ -75,7 +76,7 @@ public class MenuScreen implements Screen {
     private TextButton createSimpleButton(String text) {
         // Create a simple button with a solid color as background (no skin)
         Texture texture = new Texture("screen/button_background.jpg");
-        SpriteDrawable drawable = new SpriteDrawable(new com.badlogic.gdx.graphics.g2d.Sprite(texture));
+        SpriteDrawable drawable = new SpriteDrawable(new Sprite(texture));
 
         // Create a BitmapFont and scale it
         BitmapFont font = new BitmapFont();
@@ -95,8 +96,8 @@ public class MenuScreen implements Screen {
     }
 
     @Override
-    public void updateViewport(int screenWidth, int screenHeight, boolean centerCamera){
-        viewport.update(screenWidth, screenHeight, centerCamera);
+    public void resize(int screenWidth, int screenHeight){
+        viewport.update(screenWidth, screenHeight);
     }
 
     public Stage getStage() {
@@ -111,11 +112,12 @@ public class MenuScreen implements Screen {
         return loadGameButton;
     }
 
+    public Mygame getGame() {
+        return game;
+    }
+
     public void dispose() {
         if (stage != null) stage.dispose();
     }
 
-    public Mygame getGame() {
-        return game;
-    }
 }
