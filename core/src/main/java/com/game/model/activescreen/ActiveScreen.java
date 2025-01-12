@@ -14,7 +14,7 @@ public class ActiveScreen {
     private final ScreenView screenView;
 
     /**
-     * Constructs an <code>ActiveScreen</code> with the specified screen and screen view.
+     * Initialize the activeScreen with the specified screen and screenView.
      * @param screen the screen to be displayed
      * @param screenView the view that renders the screen
      */

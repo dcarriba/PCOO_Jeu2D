@@ -52,11 +52,11 @@ public class EnemyFactory {
                     MapProperties properties = rectangleObject.getProperties();
                     // Check if all the required custom properties exist and have a defined value
                     if (new ValidateCustomPropertiesEnemies().validate(properties)){
-                    createEnemy(
-                        (int) (rect.getX()/worldMap.getTileWidth()),
-                        (int) ((-1)*(rect.getY()/worldMap.getTileHeight() - this.worldMap.getTiledMap().getProperties().get("height", Integer.class) + 1)),
-                        "tilesets/characterstiles/" + properties.get("spriteSheetImageName")
-                    );
+                        createEnemy(
+                            (int) (rect.getX()/worldMap.getTileWidth()),
+                            (int) ((-1)*(rect.getY()/worldMap.getTileHeight() - worldMap.getTiledMap().getProperties().get("height", Integer.class) + 1)),
+                            "tilesets/characterstiles/" + properties.get("spriteSheetImageName")
+                        );
                     }
                 }
             }

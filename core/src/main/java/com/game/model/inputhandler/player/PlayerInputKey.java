@@ -11,7 +11,7 @@ public abstract class PlayerInputKey {
     private int key;
 
     /**
-     * Constructs a <code>PlayerInputKey</code> with the specified key.
+     * Constructs a PlayerInputKey with the specified key.
      * @param key The key that will trigger the input action. This is typically a key code from
      *            a key press event (e.g., <code>Input.Keys.W</code> for the 'W' key).
      */
@@ -37,7 +37,7 @@ public abstract class PlayerInputKey {
 
     /**
      * Defines the action to be executed when the associated key is pressed.
-     * @param player The <code>Player</code> that the input action will affect.
+     * @param player The Player that the input action will affect.
      */
     public abstract void action(Player player);
 }

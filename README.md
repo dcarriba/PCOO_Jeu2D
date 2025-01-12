@@ -20,6 +20,17 @@ Download the executable jar of the game in the [Releases](https://github.com/dca
 
 Requirements to run the game : Java 11 or later (minimum), Java 21 (recommended) [[download Java 21 here](https://www.oracle.com/fr/java/technologies/downloads/#java21)].
 
+## Play the Game
+
+Once in the game, use the following keys to play :
+
+- `Up Arrow`: to go up.
+- `Right Arrow`: to go right.
+- `Down Arrow`: to go down.
+- `Left Arrow`: to go left.
+- `Left Shift`: to sprint.
+- `Space Bar`: to kill an enemy.
+
 ## Clone Repository
 
 To clone this repository go to an empty directory and use the following command :
@@ -50,7 +61,7 @@ To start the application use the following command :
 #### Other useful commands :
 
 - `./gradlew lwjgl3:run`: starts the application.
-- `./gradlew jar` or `./gradlew lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
+- `./gradlew jar` or `./gradlew lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs/`.
 - `./gradlew clean`: removes `build` folders, which store compiled classes and built archives.
 - `./gradlew idea`: generates IntelliJ project data.
 - `./gradlew eclipse`: generates Eclipse project data.

@@ -78,7 +78,6 @@ public class MenuScreen implements Screen {
         Texture texture = new Texture("screen/button_background.jpg");
         SpriteDrawable drawable = new SpriteDrawable(new Sprite(texture));
 
-        // Create a BitmapFont and scale it
         BitmapFont font = new BitmapFont();
         font.getData().setScale(2f);
 
@@ -92,7 +91,7 @@ public class MenuScreen implements Screen {
 
     /** Shows the message indicating that no saved game is available. */
     public void showNoSaveMessage() {
-        noSaveGameLabel.setVisible(true);  // Show the "No saved game" message
+        noSaveGameLabel.setVisible(true);  // Shows the "No saved game found!" message
     }
 
     @Override

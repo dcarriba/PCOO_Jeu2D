@@ -13,7 +13,7 @@ public interface PropertiesValidator {
 
     /**
      * Validates a specific property.
-     * @param properties The map properties to check.
+     * @param properties The map properties.
      * @param name The name of the property to validate.
      * @return True if the property is valid, false otherwise.
      */

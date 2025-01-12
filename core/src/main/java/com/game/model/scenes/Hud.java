@@ -60,6 +60,7 @@ public class Hud {
 
     /** Called when resizing the screen, recreates the stage managing the UI elements */
     public void resize(){
+        dispose();
         createStage();
     }
 

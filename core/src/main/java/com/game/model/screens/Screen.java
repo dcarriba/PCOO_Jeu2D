@@ -2,7 +2,7 @@ package com.game.model.screens;
 
 /**
  * The <code>Screen</code> interface represents a screen in the game.
- * It provides a method to resize the screen.
+ * It defines a method to resize the screen.
  */
 public interface Screen {
 

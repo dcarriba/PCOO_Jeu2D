@@ -17,7 +17,7 @@ public abstract class Entity implements Serializable {
     private float targetY;
     /** Sprite sheet containing the sprite of the entity */
     private final SpriteSheet spriteSheet;
-    /** The Tiled Map the entity will be rendered on */
+    /** The World Map the entity will be rendered on */
     private final WorldMap worldMap;
     /** Used for the walking animation */
     private final EntityAnimation entityAnimation;
@@ -171,6 +171,7 @@ public abstract class Entity implements Serializable {
         }
     }
 
+    /** Updates the entity's movement and animation */
     public void update() {
         if (isMoving) {
             entityAnimation.nextWalkAnimationState();

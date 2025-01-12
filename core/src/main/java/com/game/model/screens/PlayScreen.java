@@ -32,7 +32,7 @@ public class PlayScreen implements Screen {
      * @param batch The sprite batch used for rendering.
      * @param worldMap The world map used in the game.
      * @param player The player.
-     * @param settings The screen settings (width and height).
+     * @param settings The game settings (width and height).
      */
     public PlayScreen(SpriteBatch batch, WorldMap worldMap, Player player, Settings settings){
         this.batch = batch;

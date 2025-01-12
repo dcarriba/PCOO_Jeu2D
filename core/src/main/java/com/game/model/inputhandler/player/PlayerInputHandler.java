@@ -24,7 +24,6 @@ public class PlayerInputHandler {
         for (PlayerInputKey inputKey : inputKeyList) {
             if (Gdx.input.isKeyPressed(inputKey.getKey())) {
                 inputKey.action(player);
-                break;
             }
         }
         PlayerInputKeySprint inputKeySprint = new PlayerInputKeySprint();

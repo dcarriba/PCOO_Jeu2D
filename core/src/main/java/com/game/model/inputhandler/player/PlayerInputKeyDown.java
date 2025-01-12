@@ -18,7 +18,7 @@ public class PlayerInputKeyDown extends PlayerInputKey {
     /**
      * Moves the player down if the tile below the player is not blocked.
      * It also updates the player's animation to reflect the down movement direction.
-     * @param player The player who will be moved down.
+     * @param player The player which will be moved down.
      */
     private void moveDown(Player player){
         player.getEntityAnimation().setWalkAnimation(new DownDirection(), player.getSpriteSheet());
@@ -33,7 +33,7 @@ public class PlayerInputKeyDown extends PlayerInputKey {
 
     /**
      * Executes the down movement action.
-     * @param player The player who is moving downwards.
+     * @param player The player which is moving downwards.
      */
     @Override
     public void action(Player player){

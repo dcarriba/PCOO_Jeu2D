@@ -18,7 +18,7 @@ public class PlayerInputKeyRight extends PlayerInputKey {
     /**
      * Moves the player to the right if the tile to the right of the player is not blocked.
      * It also updates the player's animation to reflect the right movement direction.
-     * @param player The player who will be moved right.
+     * @param player The player which will be moved right.
      */
     private void moveRight(Player player){
         player.getEntityAnimation().setWalkAnimation(new RightDirection(), player.getSpriteSheet());
@@ -33,7 +33,7 @@ public class PlayerInputKeyRight extends PlayerInputKey {
 
     /**
      * Executes the right movement action.
-     * @param player The player who is moving to the right.
+     * @param player The player which is moving to the right.
      */
     @Override
     public void action(Player player){

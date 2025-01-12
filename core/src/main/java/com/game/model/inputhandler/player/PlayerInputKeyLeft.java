@@ -18,7 +18,7 @@ public class PlayerInputKeyLeft extends PlayerInputKey {
     /**
      * Moves the player to the left if the tile to the left of the player is not blocked.
      * It also updates the player's animation to reflect the left movement direction.
-     * @param player The player who will be moved left.
+     * @param player The player which will be moved left.
      */
     private void moveLeft(Player player){
         player.getEntityAnimation().setWalkAnimation(new LeftDirection(), player.getSpriteSheet());
@@ -33,7 +33,7 @@ public class PlayerInputKeyLeft extends PlayerInputKey {
 
     /**
      * Executes the left movement action.
-     * @param player The player who is moving to the left.
+     * @param player The player which is moving to the left.
      */
     @Override
     public void action(Player player){

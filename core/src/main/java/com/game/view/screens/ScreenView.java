@@ -8,7 +8,7 @@ public interface ScreenView {
 
     /**
      * Renders the content of the screen.
-     * This method is called every frame to update the visuals of the screen.
+     * This method is called every frame, to update the visuals of the screen.
      */
     void render();
 }
